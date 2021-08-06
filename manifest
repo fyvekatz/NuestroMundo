@@ -5,16 +5,16 @@
 #
 
 # Channel Details
-title=MultiLive
-major_version=1
-minor_version=0
+title=LatinoCanales
+major_version=0
+minor_version=1
 build_version=245
 
 # Channel Assets
-mm_icon_focus_hd=pkg:/images/multi-channel-poster.png
-splash_screen_fhd=pkg:/images/multi-channel-splash-FHD.jpg
+mm_icon_focus_hd=pkg:/images/channel-poster.jpeg
+splash_screen_fhd=pkg:/images/channel-splash-FHD.jpeg
 splash_color=#808080
-splash_min_time=0
+splash_min_time=3000
 
 # Roku Ad Framework Meta Data
 requires_audiometadata=1
