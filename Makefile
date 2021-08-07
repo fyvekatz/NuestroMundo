@@ -28,6 +28,6 @@
 APPNAME = LatinoCanales
 VERSION = 1.0
 
-ZIP_EXCLUDE = -x .\* -x \*\# -x xml/* -x artwork/* -x \*.pkg -x storeassets\* -x keys\* -x README* -x apps\* -x app.mk
+ZIP_EXCLUDE = -x .\* -x \*\# -x xml/* -x artwork/* -x \*.pkg -x storeassets\* -x keys\* -x README* -x apps\* -x app.mk -x staging_images\* -x sample_streams\* Makefile
 
 include ./app.mk
