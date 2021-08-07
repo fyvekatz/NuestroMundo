@@ -16,19 +16,19 @@ Function loadConfig() as Object
     Title: "Repretel Canal 2"
     streamFormat: "hls"
     Logo: "https://yt3.ggpht.com/ytc/AKedOLSalPTzbA5vd1NjQo6O28oTYy2b7qSZS0R7-Q55=s900-c-k-c0x00ffffff-no-rj"
-    Stream: "https://cr-repretel-canal2-live.ned.media/repretel/canal2/smil:live.smil/playlist.m3u8"
+    Stream: "https://cr-repretel-canal2-live.ned.media/repretel/canal2/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzMzgwLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiIyZjQ2OWY4M2Y2NTdkYTMyYmNkMWFlNjdlMzc1ZmUxZTkzMDhhN2U2In0="
 }
 {
     Title: "Repretel Canal 4"
     streamFormat: "hls"
     Logo: "https://lh3.googleusercontent.com/proxy/aFz9ziLuECWEK27Ri2dnI88JcW_YXOHcuAG6ayoHyWUV7S3WZFuZjZ9WaV43X9WR0CTA7mOPeYQY2rwniJcyjNfSulinq0x0DDeLGHMc6i-ZfF-osoqo8p5webzD9O2QYBqPyOQvPtKFUW15_bUOZg9k"
-    Stream: "https://cr-repretel-canal4-live.ned.media/repretel/canal4/smil:live.smil/playlist.m3u8"
+    Stream: "https://cr-repretel-canal4-live.ned.media/repretel/canal4/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDM5LCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI3Zjc1MWQzNWIxZGNjOTk3YzAzZWExMWI3ZDNkMmFmMjQ2MGU5Njg1In0="
 }
 {
     Title: "Repretel Canal 6"
     streamFormat: "hls"
     Logo: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Repretel_Canal_6_2008-2010.png"
-    Stream: "https://cr-repretel-canal6-live.ned.media/repretel/canal6/smil:live.smil/playlist.m3u8"
+    Stream: "https://cr-repretel-canal6-live.ned.media/repretel/canal6/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDcxLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI4ZjA2N2RkMzkzNTRiOWU5ZjIzMzQzYTViNTliOWQ2NDc5MjlkMjJmIn0="
 }
 {
     Title: "Teletica Canal 7"

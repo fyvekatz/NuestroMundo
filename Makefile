@@ -25,7 +25,7 @@
 # 3) If you want, you can also set DEVPASSWORD in your environment so that
 #    you don't need to type in your password for each install.
 ##########################################################################
-APPNAME = LatinaCanales
+APPNAME = LatinoCanales
 VERSION = 1.0
 
 ZIP_EXCLUDE = -x .\* -x \*\# -x xml/* -x artwork/* -x \*.pkg -x storeassets\* -x keys\* -x README* -x apps\* -x app.mk
