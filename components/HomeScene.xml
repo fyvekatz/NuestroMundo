@@ -36,10 +36,17 @@
 			repeat="true"
 			duration="10"
 		/>
-		<Label>
-		</Label>
 
-		<ContentNode id="countriesContent" role = "content" />
+		<ContentNode id="countriesContent" />
+
+		<Poster id="channelInforPosterCompact"
+			width="200"
+			height="100"
+			opacity="0.25"
+			loadSync="true"
+			loadWidth=""
+		translation="[50,800]"/>
+		
 		
 	</children>
 </component>

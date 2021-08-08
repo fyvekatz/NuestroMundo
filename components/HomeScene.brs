@@ -5,20 +5,23 @@ sub init()
     ? "Entering ==init=="
 
     'Country list loaded in subroutine
-    'm.countryContent = m.top.findNode("countriesContent")
-    'loadCountriesContent()
+    m.countryContent = m.top.findNode("countriesContent")
+    loadCountriesContent()
  
     ? "Countries content"
     ? "================="
-    '? m.countryContent
+    ? m.countryContent
+    ? m.countryContent.getChildCount()
+    ? m.countryContent.getChild(0)
 
-    m.numberMainPosters     = 7
+    m.numberMainPosters     = m.countryContent.getChildCount()
     m.currentPosterIndex    = 1
+    firstCountry            = m.countryContent.getChild(m.currentPosterIndex-1)
+    
 
     'Initialize main poster
     m.mainPoster = m.top.findNode("mainPoster")
-    m.mainPoster.findNode("mainPoster").uri = "pkg:/images/poster_" + m.currentPosterIndex.ToStr()  + ".jpeg"
-    'm.mainPoster.findNode("mainPoster").uri = "pkg:/images/poster_" + m.countryContent.GetChild(0)  + ".jpeg"
+    m.mainPoster.findNode("mainPoster").uri = "pkg:/images/poster_" + firstCountry.shortCode  + ".jpeg"
 
     'Initialize main poster timer
     m.mainPosterTimer          = m.top.findNode("mainPosterTimer")
@@ -52,7 +55,8 @@ sub mainPosterAnimation()
 
         ? "Pre-transformation:" + m.mainPoster.uri
 
-        m.mainPoster.uri = "pkg:/images/poster_" + m.currentPosterIndex.ToStr()  + ".jpeg"
+        currentCountry = m.countryContent.getChild(m.currentPosterIndex-1)
+        m.mainPoster.uri = "pkg:/images/poster_" + currentCountry.shortCode  + ".jpeg"
 
         ? "Post-transformation:" + m.mainPoster.uri
 
@@ -101,15 +105,18 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
     return handled
 end function
 
-'sub loadCountriesContent()
- '   m.countryContent = m.top.findNode("countriesContent")
-  '  json          = parsejson(readAsciiFile("pkg:/data/Countries.json"))
+sub loadCountriesContent()
+    m.countryContent = m.top.findNode("countriesContent")
+    json          = parsejson(readAsciiFile("pkg:/data/Countries.json"))
 
-    'if invalid <> json and invalid <> json["countries"] and json["countries"].length >= 1
-    '    for each country in json["countries"]
-    '        node = createObject("roSGNode", "ContentNode")
-    '        node.setFields(country)
-    '        m.contentList.appendChild(node)
-    '    end for
-    'end if
-'end sub
+    for each country in json.countries
+            
+        countryContent              = CreateObject("RoSGNode","ContentNode")
+        countryContent.addfield("id",         "string",  false)
+        countryContent.addfield("name",       "string",  false)
+        countryContent.addfield("shortCode",  "string",  false)
+        countryContent.update(country, false)
+        
+        m.countryContent.appendChild(countryContent)
+    end for
+end sub
