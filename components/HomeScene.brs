@@ -2,21 +2,14 @@
 ' ********** Copyright 2016 Roku Corp.  All Rights Reserved. **********
 
 sub init()
-    ? "Entering ==init=="
+    ? "== Entering HomeScenes init=="
 
     'Country list loaded in subroutine
-    m.countryContent = m.top.findNode("countriesContent")
-    loadCountriesContent()
- 
-    ? "Countries content"
-    ? "================="
-    ? m.countryContent
-    ? m.countryContent.getChildCount()
-    ? m.countryContent.getChild(0)
-
-    m.numberMainPosters     = m.countryContent.getChildCount()
+    loadCountriesContent(m.global)
+    
+    m.numberMainPosters     = m.global.countriesContent.getChildCount()
     m.currentPosterIndex    = 1
-    firstCountry            = m.countryContent.getChild(m.currentPosterIndex-1)
+    firstCountry            = m.global.countriesContent.getChild(m.currentPosterIndex-1)
     
 
     'Initialize main poster
@@ -33,10 +26,12 @@ sub init()
     m.mainPosterDisappearAnimation.ObserveField("state", "mainPosterAnimation")
 
     m.mainPoster.setFocus(true)
+
+    ? "== Exitting HomeScenes init=="
 end sub
 
 sub mainPosterAnimation()
-    ? "Entering ==changeMainPoster=="
+    ? "==Entering changeMainPoster=="
 
     'If poster is visible
     if m.mainPoster.opacity = 1.0
@@ -53,22 +48,18 @@ sub mainPosterAnimation()
         else m.currentPosterIndex++
         end if
 
-        ? "Pre-transformation:" + m.mainPoster.uri
-
-        currentCountry = m.countryContent.getChild(m.currentPosterIndex-1)
+        currentCountry = m.global.countriesContent.getChild(m.currentPosterIndex-1)
         m.mainPoster.uri = "pkg:/images/poster_" + currentCountry.shortCode  + ".jpeg"
-
-        ? "Post-transformation:" + m.mainPoster.uri
-
-        ? "Make poster appear"
         m.mainPosterAppearAnimation.control = "start"
     
     end if
+
+    ? "==Exitting changeMainPoster=="
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean
 
-    ? "Key pressed"
+    ? "==Entering onKeyEvent (key: " + key + ")=="
     
     handled = false
     if press then
@@ -102,21 +93,8 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
             handled = true
         end if
     end if
+
+    ? "==Exitting onKeyEvent=="
+
     return handled
 end function
-
-sub loadCountriesContent()
-    m.countryContent = m.top.findNode("countriesContent")
-    json          = parsejson(readAsciiFile("pkg:/data/Countries.json"))
-
-    for each country in json.countries
-            
-        countryContent              = CreateObject("RoSGNode","ContentNode")
-        countryContent.addfield("id",         "string",  false)
-        countryContent.addfield("name",       "string",  false)
-        countryContent.addfield("shortCode",  "string",  false)
-        countryContent.update(country, false)
-        
-        m.countryContent.appendChild(countryContent)
-    end for
-end sub

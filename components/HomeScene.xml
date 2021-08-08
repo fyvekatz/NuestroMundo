@@ -3,8 +3,8 @@
 <!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
 
 <component name="HomeScene" extends="Scene" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
-	<script type = "text/brightscript" uri = "pkg:/components/HomeScene.brs" />	
-	<script type = "text/brightscript" uri = "pkg:/components/Config.brs"/>
+	<script type = "text/brightscript" uri = "pkg:/components/HomeScene.brs" />
+	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />	
 	
 	<children>
 		<poster id="mainPoster"
@@ -13,6 +13,8 @@
 			opacity="1.0"
 			loadSync="true"
 		translation="[0,0]"/>
+
+		<!-- Fade in / fade out animations -->
 		<Animation id="mainPosterDisappear"
 			duration="1.0"
 			repeat="false"
@@ -31,6 +33,8 @@
 				keyValue="[ 0.0, 1.0 ]"       
 				fieldToInterp="mainPoster.opacity" />
 		</Animation>
+		<!-- End: Fade in / fade out animations -->
+
 		<Timer
 			id="mainPosterTimer"
 			repeat="true"
@@ -39,14 +43,14 @@
 
 		<ContentNode id="countriesContent" />
 
-		<Poster id="channelInfoPosterCompact"
-			width="200"
-			height="100"
-			opacity="0.25"
-			loadSync="true"
-			loadWidth=""
-		translation="[50,800]"/>
-		
-		
+		<ChannelNameFlagAndScroll 
+			id = "channelInfoPosterCompact"
+			translation = "[50, 500]"
+			width = "500"
+			height = "300"
+			color = "0x000000"
+			inheritParentOpacity = "false"
+			opacity = "0.75"
+		/>
 	</children>
 </component>

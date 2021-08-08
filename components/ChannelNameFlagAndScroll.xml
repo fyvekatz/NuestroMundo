@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="ChannelNameFlagAndScroll" extends="Rectangle" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type = "text/brightscript" uri = "pkg:/components/ChannelNameFlagAndScroll.brs" />
+	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />
+	
+	<interface>
+		<!--<field id = "itemContent" type = "node" onChange = "itemContentChanged" />
+		<field id = "height" type = "float" onChange= "updateLayout" />
+		<field id = "width" type = "float" onChange = "updateLayout" /> -->
+		<field id = "country" type = "string" onChange = "fadeToCountry" />
+	</interface>
+
+	<children>
+		<Label id = "countryNameLabelCenter"
+			translation = "[0,0]"
+			height = "50"
+			width = "500"
+			font = "font:MediumSystemFont"
+			horizAlign = "center" />
+
+		<Label id = "countryNameLabelLeft"
+			translation = "[-500,0]"
+			height = "50"
+			width = "500"
+			font = "font:MediumSystemFont"
+			horizAlign = "center" />
+
+		<Label id = "countryNameLabelRight"
+			translation = "[0,1000]"
+			height = "50"
+			width = "500"
+			font = "font:MediumSystemFont"
+			horizAlign = "center" />
+
+		<ParallelAnimation id="scrollLabelLeftAnimation">
+			<Animation id="scrollCurrentLabelLeftAnimation"
+				duration="0.5"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [0,0], [-500,0] ]"
+					fieldToInterp="countryNameLabelCenter.translation"   />
+			</Animation>
+			<Animation id="scrollNextLabelLeftAnimation"
+				duration="0.5"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [0,500], [0,0] ]"
+					fieldToInterp="countryNameLabelCenter.translation"   />
+			</Animation>
+		</Parallel>
+	</children>
+</component>
