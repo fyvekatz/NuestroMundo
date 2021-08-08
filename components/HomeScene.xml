@@ -7,42 +7,34 @@
 	<script type = "text/brightscript" uri = "pkg:/components/Config.brs"/>
 	
 	<children>
-			<poster 
-				id="visibleMainPoster"
-				width="0.0"
-				height="0.0"
-				translation="[0,0]"/>
-			<poster 
-				id="nextMainPoster"
-				width="0.0"
-				height="0.0"
-				translation="[1920,0]"/>
-			<ParallelAnimation id="mainPosterAnimations">
-				<Animation id = "visibleMainPosterAnimation"
-					repeat = "false"
-					duration = ".75"
-					easeFunction = "linear">
-					<Vector2DFieldInterpolator
-						key = "[0,1]"
-						keyValue = "[[0,0],[-1920,0]]"
-						fieldToInterp="visibleMainPoster.translation"
-					/>
-				</Animation>
-				<Animation id = "nextMainPosterAnimation"
-					repeat = "false"
-					duration = ".75"
-					easeFunction = "linear">
-					<Vector2DFieldInterpolator
-						key = "[0,1]"
-						keyValue = "[[1920,0],[0,0]]"
-						fieldToInterp="nextMainPoster.translation"
-					/>
-				</Animation>
-			</ParallelAnimation>
+		<poster id="mainPoster"
+			width="0.0"
+			height="0.0"
+			opacity="1.0"
+			loadSync="true"
+		translation="[0,0]"/>
+		<Animation id="mainPosterDisappear"
+			duration="1.0"
+			repeat="false"
+			easeFunction="linear">
+			<FloatFieldInterpolator
+				key="[0.0, 1.0]"    
+				keyValue="[ 1.0, 0.0 ]"       
+				fieldToInterp="mainPoster.opacity" />
+		</Animation>
+		<Animation id="mainPosterAppear"
+			duration="1.0"
+			repeat="false"
+			easeFunction="linear">
+			<FloatFieldInterpolator
+				key="[0.0, 1.0]"    
+				keyValue="[ 0.0, 1.0 ]"       
+				fieldToInterp="mainPoster.opacity" />
+		</Animation>
 		<Timer
-			id="mainPostersTimer"
+			id="mainPosterTimer"
 			repeat="true"
-			duration="6"
+			duration="10"
 		/>
 	</children>
 </component>

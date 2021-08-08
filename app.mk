@@ -159,6 +159,10 @@ remove:
 		curl -s -S -F "mysubmit=Delete" -F "archive=" -F "passwd=" http://$(ROKU_DEV_TARGET)/plugin_install | grep "<font color" | sed "s/<font color=\"red\">//" | sed "s[</font>[[" ; \
 	fi
 
+clean:
+	@echo "Cleaning build directory..."
+	rm -fr apps .DS_Store
+
 install_native: $(APPNAME)
 	@echo "Installing $(APPNAME) to native."
 	@mkdir -p $(NATIVEDEVREL)
