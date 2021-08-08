@@ -1,0 +1,32 @@
+{
+    "countries": [
+        {
+            "name":         "Costa Rica",
+            "shortCode":    "CR"
+        },
+        {
+            "name":         "El Salvador",
+            "shortCode":    "SV"
+        },
+        {
+            "name":         "Guatemala",
+            "shortCode":    "GT"
+        },
+        {
+            "name":         "Honduras",
+            "shortCode":    "HN"
+        },
+        {
+            "name":         "Mexico",
+            "shortCode":    "MX"
+        },
+        {
+            "name":         "Nicaragua",
+            "shortCode":    "NI"
+        },
+        {
+            "name":         "Panama",
+            "shortCode":    "PA"
+        }
+    ]
+}

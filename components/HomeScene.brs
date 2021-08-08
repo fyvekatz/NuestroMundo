@@ -3,12 +3,24 @@
 
 sub init()
     ? "Entering ==init=="
+
+    'Country list loaded in subroutine
+    'm.countryContent = m.top.findNode("countriesContent")
+    'loadCountriesContent()
+ 
+    ? "Countries content"
+    ? "================="
+    '? m.countryContent
+
     m.numberMainPosters     = 7
     m.currentPosterIndex    = 1
 
+    'Initialize main poster
     m.mainPoster = m.top.findNode("mainPoster")
     m.mainPoster.findNode("mainPoster").uri = "pkg:/images/poster_" + m.currentPosterIndex.ToStr()  + ".jpeg"
+    'm.mainPoster.findNode("mainPoster").uri = "pkg:/images/poster_" + m.countryContent.GetChild(0)  + ".jpeg"
 
+    'Initialize main poster timer
     m.mainPosterTimer          = m.top.findNode("mainPosterTimer")
     m.mainPosterTimer.control  = "start"
     m.mainPosterTimer.ObserveField("fire", "mainPosterAnimation")
@@ -88,3 +100,16 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
     end if
     return handled
 end function
+
+'sub loadCountriesContent()
+ '   m.countryContent = m.top.findNode("countriesContent")
+  '  json          = parsejson(readAsciiFile("pkg:/data/Countries.json"))
+
+    'if invalid <> json and invalid <> json["countries"] and json["countries"].length >= 1
+    '    for each country in json["countries"]
+    '        node = createObject("roSGNode", "ContentNode")
+    '        node.setFields(country)
+    '        m.contentList.appendChild(node)
+    '    end for
+    'end if
+'end sub
