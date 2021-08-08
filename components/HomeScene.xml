@@ -39,7 +39,7 @@
 
 		<ContentNode id="countriesContent" />
 
-		<Poster id="channelInforPosterCompact"
+		<Poster id="channelInfoPosterCompact"
 			width="200"
 			height="100"
 			opacity="0.25"
