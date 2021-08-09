@@ -13,8 +13,8 @@ sub init()
     
 
     'Initialize main poster
-    m.mainPoster = m.top.findNode("mainPoster")
-    m.mainPoster.findNode("mainPoster").uri = "pkg:/images/poster_" + firstCountry.shortCode  + ".jpeg"
+    m.mainPoster        = m.top.findNode("mainPoster")
+    m.mainPoster.uri    = "pkg:/images/poster_" + firstCountry.shortCode  + ".jpeg"
 
     'Initialize main poster timer
     m.mainPosterTimer          = m.top.findNode("mainPosterTimer")
@@ -51,7 +51,10 @@ sub mainPosterAnimation()
         currentCountry = m.global.countriesContent.getChild(m.currentPosterIndex-1)
         m.mainPoster.uri = "pkg:/images/poster_" + currentCountry.shortCode  + ".jpeg"
         m.mainPosterAppearAnimation.control = "start"
-    
+
+        'Set country on channelInfoPosterCompact
+        m.top.findNode("channelInfoPosterCompact").country = currentCountry.name
+
     end if
 
     ? "==Exitting changeMainPoster=="

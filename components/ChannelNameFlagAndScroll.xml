@@ -10,34 +10,37 @@
 		<!--<field id = "itemContent" type = "node" onChange = "itemContentChanged" />
 		<field id = "height" type = "float" onChange= "updateLayout" />
 		<field id = "width" type = "float" onChange = "updateLayout" /> -->
-		<field id = "country" type = "string" onChange = "fadeToCountry" />
+		<field id = "country" type = "string" onChange = "updateToCountry" />
 	</interface>
 
 	<children>
 		<Label id = "countryNameLabelCenter"
 			translation = "[0,0]"
-			height = "50"
+			height = "70"
 			width = "500"
-			font = "font:MediumSystemFont"
-			horizAlign = "center" />
+			font = "font:LargeBoldSystemFont"
+			horizAlign = "center"
+			vertAlign = "center" />
 
 		<Label id = "countryNameLabelLeft"
 			translation = "[-500,0]"
-			height = "50"
+			height = "70"
 			width = "500"
-			font = "font:MediumSystemFont"
-			horizAlign = "center" />
+			font = "font:LargeBoldSystemFont"
+			horizAlign = "center"
+			vertAlign = "center"  />
 
 		<Label id = "countryNameLabelRight"
 			translation = "[0,1000]"
-			height = "50"
+			height = "70"
 			width = "500"
-			font = "font:MediumSystemFont"
-			horizAlign = "center" />
+			font = "font:LargeBoldSystemFont"
+			horizAlign = "center"
+			vertAlign = "center"  />
 
-		<ParallelAnimation id="scrollLabelLeftAnimation">
+		<ParallelAnimation id="scrollLeftAnimation">
 			<Animation id="scrollCurrentLabelLeftAnimation"
-				duration="0.5"
+				duration="1.0"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -46,14 +49,94 @@
 					fieldToInterp="countryNameLabelCenter.translation"   />
 			</Animation>
 			<Animation id="scrollNextLabelLeftAnimation"
-				duration="0.5"
+				duration="1.0"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
 					key="[0.0, 1.0]"
-					keyValue="[ [0,500], [0,0] ]"
+					keyValue="[ [500,0], [0,0] ]"
+					fieldToInterp="countryNameLabelRight.translation"   />
+			</Animation>
+			<Animation id="scrollCurrentPosterLeftAnimation"
+				duration="1.0"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [50,75], [-450, 75] ]"
+					fieldToInterp="countryFlagPosterCenter.translation"   />
+			</Animation>
+			<Animation id="scrollNextPosterLeftAnimation"
+				duration="1.0"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [550,75], [50, 75] ]"
+					fieldToInterp="countryFlagPosterRight.translation"   />
+			</Animation>
+		</ParallelAnimation>
+
+		<ParallelAnimation id="scrollRightAnimation">
+			<Animation id="scrollCurrentLabelRightAnimation"
+				duration="1.0"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [0,0], [500,0] ]"
 					fieldToInterp="countryNameLabelCenter.translation"   />
 			</Animation>
-		</Parallel>
+			<Animation id="scrollNextLabelRightAnimation"
+				duration="1.0"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [-500,0], [0,0] ]"
+					fieldToInterp="countryNameLabelLeft.translation"   />
+			</Animation>
+			<Animation id="scrollCurrentPosterRightAnimation"
+				duration="1.0"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [50,75], [550, 75] ]"
+					fieldToInterp="countryFlagPosterCenter.translation"   />
+			</Animation>
+			<Animation id="scrollNextPosterRightAnimation"
+				duration="1.0"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [-450,75], [50, 75] ]"
+					fieldToInterp="countryFlagPosterLeft.translation"   />
+			</Animation>
+		</ParallelAnimation>
+
+		<!-- Flags -->
+
+		<Poster id = "countryFlagPosterCenter"
+			translation = "[50,75]"
+			height = "200"
+			width = "400"
+			opacity="1.0"
+			loadSync="true"/>
+
+		<Poster id = "countryFlagPosterLeft"
+			translation = "[-450,75]"
+			height = "200"
+			width = "400"
+			opacity="1.0"
+			loadSync="true"/>
+
+		<Poster id = "countryFlagPosterRight"
+			translation = "[550,75]"
+			height = "200"
+			width = "400"
+			opacity="1.0"
+			loadSync="true"/>
 	</children>
 </component>

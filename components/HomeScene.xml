@@ -45,12 +45,13 @@
 
 		<ChannelNameFlagAndScroll 
 			id = "channelInfoPosterCompact"
-			translation = "[50, 500]"
+			translation = "[50, 400]"
 			width = "500"
-			height = "300"
+			height = "325"
+			clippingRect = "[0.0, 0.0, 500, 325]"
 			color = "0x000000"
 			inheritParentOpacity = "false"
-			opacity = "0.75"
+			opacity = "0.85"
 		/>
 	</children>
 </component>

@@ -23,10 +23,6 @@ sub loadCountriesContent(global as Object)
         global.countriesContentStatus = "loading"
         global.countriesContent       = CreateObject("RoSGNode","ContentNode")
 
-        ? "New countriesContent object"
-        ? global
-        ? global.countriesContent
-
         'Read in the json content
         json                          = parsejson(readAsciiFile("pkg:/data/Countries.json"))
 
