@@ -43,7 +43,16 @@ Sub loadContent()
             end for
         end for
 
+        'Make "Featured appear first"
+        featuredCategoryChannels = channelsByCategory["Featured"]
+        featuredCategoryContentNode = createObject("RoSGNode","ContentNode")
+        featuredCategoryContentNode.Title = "Featured"
+        featuredCategoryContentNode.insertChildren(featuredCategoryChannels, 0)
+        countryContentItem.appendChild(featuredCategoryContentNode)
+        channelsByCategory.delete("Featured")
+
         for each category in channelsByCategory
+
 
             categoryContentItem = createObject("RoSGNode","ContentNode")
             categoryContentItem.Title = category
@@ -51,13 +60,13 @@ Sub loadContent()
             countryContentItem.appendChild(categoryContentItem)
         end for
 
-        '? "Content node for " + country
-        '? countryContentItem
+        ? "Content node for " + country
+        ? countryContentItem
 
         for each categoryContentItem in countryContentItem.getChildren(-1, 0)
 
-            '? "Content node for " + categoryContentItem.TITLE
-            '? categoryContentItem
+            ? "Content node for " + categoryContentItem.TITLE
+            ? categoryContentItem
 
             for each channelContentItem in categoryContentItem.getChildren(-1, 0)
 

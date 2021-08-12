@@ -18,8 +18,8 @@ sub init()
 
 	'Initialize country if not already set
 	if m.top.country = invalid or m.top.country= ""
-		m.top.country = m.global.countriesContent.countries.keys()[0]
-		? "Setting centerLabel to the start of the country list."
+		m.top.country 		= m.global.countriesContent.countries.keys()[0]
+		'? "Setting centerLabel to the start of the country list."
 		m.centerLabel.text 	= m.global.countriesContent.countries.keys()[0]
 		m.leftLabel.text 	= m.global.countriesContent.countries.keys()[m.global.countriesContent.countries.count()-1]
 		m.rightLabel.text 	= m.global.countriesContent.countries.keys()[1]
@@ -29,8 +29,6 @@ sub init()
 		m.rightPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[1]].shortCode + ".jpeg"
 	end if
 
-	'updateToCountry()
-
 	? "==Exitting ChannelNameFlagAndScroll:init=="
 End sub
 
@@ -38,35 +36,35 @@ sub updateToCountry()
 
 	? "==Entering ChannelNameFlagAndScroll:updateToCountry=="
 	
-	? "Initial current index: " + Str(m.currentIndex)
+	'? "Initial current index: " + m.currentIndex.ToStr()
 
 	'Identify index of current country
 	targetIndex = getCountryIndex(m.top.country)
 
 	? "Target country is " + m.top.country
-	? "Target index is " + Str(targetIndex)
+	'? "Target index is " + targetIndex.ToStr()
 
 	'Is it faster to get there by scrolling "left" or "right"?
 	
 	'If targetIndex > currentIndex
 	if targetIndex > m.currentIndex
 
-		? "New index is greater than previous index (" + Str(targetIndex) + ">" + Str(m.currentIndex) + ")."
+		'? "New index is greater than previous index (" + targetIndex.ToStr() + ">" + m.currentIndex.ToStr() + ")."
 		forwardDistance = targetIndex - m.currentIndex
 		backDistance	= m.currentIndex + (m.global.countriesContent.countries.count() - targetIndex)
 
-		? "Forward distance: " + Str(forwardDistance)
-		? "Back distance:" + Str(backDistance)
+		'? "Forward distance: " + forwardDistance.ToStr()
+		'? "Back distance:" + backDistance.ToStr()
 
 	'Else newIndex < currentIndex
 	else
 
-		? "New index is less than current index (" + Str(targetIndex) + "<" + Str(m.currentIndex) + ")."
+		'? "New index is less than current index (" + targetIndex.ToStr() + "<" + m.currentIndex.ToStr() + ")."
 		forwardDistance = (m.global.countriesContent.countries.count() - m.currentIndex) + targetIndex
 		backDistance = m.currentIndex - targetIndex
 
-		? "Forward distance: " + Str(forwardDistance)
-		? "Back distance:" + Str(backDistance)
+		'? "Forward distance: " + forwardDistance.ToStr()
+		'? "Back distance:" + backDistance.ToStr()
 	end if
 
 	'Note previous index prior to animating
@@ -75,20 +73,20 @@ sub updateToCountry()
 	'Whichever's smaller, scroll that way.
 	if forwardDistance < backDistance
 
-		? "Scrolling left..."
+		'? "Scrolling left..."
 		while m.currentIndex <> targetIndex
 			scrollLeft()
 		end while
-		? "Scroll complete."
+		'? "Scroll complete."
 	else
-		? "Scrolling right..."
+		'? "Scrolling right..."
 		while m.currentIndex <> targetIndex
 			scrollRight()
 		end while
-		? "Scroll complete."
+		'? "Scroll complete."
 	end if
 
-	? "Final current index: " + Str(m.currentIndex)
+	'? "Final current index: " + m.currentIndex.ToStr()
 
 	? "==Exitting ChannelNameFlagAndScroll:updateToCountry=="
 end sub
@@ -126,7 +124,6 @@ sub scrollRight()
 	leftIndex = decrementCountryIndex(m.currentIndex)
 
 	'Set the new labels
-	
 	m.centerLabel.visible 	= true
 	m.leftLabel.visible		= true
 	m.rightLabel.visible	= false

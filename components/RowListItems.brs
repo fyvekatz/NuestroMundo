@@ -8,8 +8,8 @@ End Sub
 Sub itemContentChanged()
 	? "==Entering RowListItems:itemContentChanged=="
 
-	? "Item Content"
-	? m.top.itemContent
+	'? "Item Content"
+	'? m.top.itemContent
 
 	m.Poster.uri = m.top.itemContent.HDPosterUrl
 	m.Label.text = m.top.itemContent.title

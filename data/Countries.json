@@ -1,5 +1,5 @@
 {
-    "Categories": ["featured", "general", "news", "religious", "entertainment", "talk", "culture", "education", "public"],
+    "Categories": ["Featured", "General", "News", "Religious", "Entertainment", "Talk", "Culture", "Education", "Public"],
     "countries":{
             "Costa Rica": {
                 "shortCode":    "CR",
@@ -11,40 +11,40 @@
                     "Url":    "https://cr-repretel-canal2-live.ned.media/repretel/canal2/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzMzgwLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiIyZjQ2OWY4M2Y2NTdkYTMyYmNkMWFlNjdlMzc1ZmUxZTkzMDhhN2U2In0=",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://yt3.ggpht.com/ytc/AKedOLSalPTzbA5vd1NjQo6O28oTYy2b7qSZS0R7-Q55=s900-c-k-c0x00ffffff-no-rj",
-                    "Categories":   ["featured", "news", "talk", "San Jose"],
+                    "Categories":   ["Featured", "News", "Talk", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Repretel 4",
+                    "Title":        "Repretel 4",
                     "channel":      "4",
                     "region":       "San Jose",
-                    "Url":    "https://cr-repretel-canal4-live.ned.media/repretel/canal4/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDM5LCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI3Zjc1MWQzNWIxZGNjOTk3YzAzZWExMWI3ZDNkMmFmMjQ2MGU5Njg1In0=",
+                    "Url":          "https://cr-repretel-canal4-live.ned.media/repretel/canal4/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDM5LCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI3Zjc1MWQzNWIxZGNjOTk3YzAzZWExMWI3ZDNkMmFmMjQ2MGU5Njg1In0=",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://lh3.googleusercontent.com/proxy/aFz9ziLuECWEK27Ri2dnI88JcW_YXOHcuAG6ayoHyWUV7S3WZFuZjZ9WaV43X9WR0CTA7mOPeYQY2rwniJcyjNfSulinq0x0DDeLGHMc6i-ZfF-osoqo8p5webzD9O2QYBqPyOQvPtKFUW15_bUOZg9k",
-                    "Categories":   ["featured", "general", "San Jose"],
+                    "HDPosterUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Repretel_4_logo.png/600px-Repretel_4_logo.png",
+                    "Categories":   ["Featured", "General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Repretel 6",
+                    "Title":        "Repretel 6",
                     "channel":      "6",
                     "region":       "San Jose",
-                    "Url":    "https://cr-repretel-canal6-live.ned.media/repretel/canal6/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDcxLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI4ZjA2N2RkMzkzNTRiOWU5ZjIzMzQzYTViNTliOWQ2NDc5MjlkMjJmIn0=",
+                    "Url":          "https://cr-repretel-canal6-live.ned.media/repretel/canal6/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDcxLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI4ZjA2N2RkMzkzNTRiOWU5ZjIzMzQzYTViNTliOWQ2NDc5MjlkMjJmIn0=",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://upload.wikimedia.org/wikipedia/commons/0/0a/Repretel_Canal_6_2008-2010.png",
-                    "Categories":   ["general", "San Jose"],
+                    "HDPosterUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/0a/Repretel_Canal_6_2008-2010.png",
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Teletica 7",
+                    "Title":        "Teletica 7",
                     "channel":      "7",
                     "region":       "San Jose",
-                    "Url":    "https://www.dailymotion.com/cdn/live/video/x29e3wg.m3u8?sec=RRaQWohHhS0MzAc4pW5WUBzv-k-ummikSSlqOm8v4UNS2BPZa2uwFSdHbaut7vNg0eBbxpk7jNivBIHbEC2Myw",
+                    "Url":          "https://www.dailymotion.com/cdn/live/video/x29e3wg.m3u8?sec=RRaQWohHhS0MzAc4pW5WUBzv-k-ummikSSlqOm8v4UNS2BPZa2uwFSdHbaut7vNg0eBbxpk7jNivBIHbEC2Myw",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://pbs.twimg.com/profile_images/1346206385013403649/gJhI7QoL.jpg",
-                    "Categories":   ["featured", "general", "entertainment", "San Jose"],
+                    "HDPosterUrl":  "https://pbs.twimg.com/profile_images/1346206385013403649/gJhI7QoL.jpg",
+                    "Categories":   ["Featured", "General", "Entertainment", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -52,10 +52,10 @@
                     "Title":         "Teledario",
                     "channel":      "8",
                     "region":       "San Jose",
-                    "Url":    "https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445.m3u8",
+                    "Url":          "https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://vignette.wikia.nocookie.net/logopedia/images/5/5a/Multimedios_Televisi%C3%B3n_2015.png/revision/latest?cb=20150818212223",
-                    "Categories":   ["general", "San Jose"],
+                    "HDPosterUrl":  "https://vignette.wikia.nocookie.net/logopedia/images/5/5a/Multimedios_Televisi%C3%B3n_2015.png/revision/latest?cb=20150818212223",
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -66,7 +66,7 @@
                     "Url":    "https://www.dailymotion.com/cdn/live/video/x7vh8g3.m3u8?sec=CuMr-u1XeSxJYScbAhGkYsmT3XVSAWwfkaNA3SIZytjlWi2XjSxnUKFyyEX-SKiKOlEb1EuJFqtUDrsAYgO-kA",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://www.elmundo.cr/wp-content/uploads/2017/06/sinart-1024x676.jpg",
-                    "Categories":   ["general", "culture", "education", "news", "public", "San Jose"],
+                    "Categories":   ["General", "Culture", "Education", "News", "Public", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -77,7 +77,7 @@
                     "Url":    "https://5bf8041cb3fed.streamlock.net:443/TVSURCANAL14/TVSURCANAL14/playlist.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://pbs.twimg.com/profile_images/1314328513349144577/7dTHR_gg_400x400.jpg",
-                    "Categories":   ["general", "San Jose"],
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -88,7 +88,7 @@
                     "Url":    "http://163.178.170.127:1935/quinceucr/live.stream_720p/chunklist_w1053428288.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://www.ucr.ac.cr/medios/imagenes/2021/607466deea50560713b52a749blogocanal15.jpg",
-                    "Categories":   ["education", "San Jose"],
+                    "Categories":   ["Education", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -99,7 +99,7 @@
                     "Url":    "https://5d16127744872.streamlock.net/TVUNO/TVUNO/playlist.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://serenotv.com/wp-content/uploads/2020/10/Canal-27-teleuno-en-vivo.jpg",
-                    "Categories":   ["religious", "San Jose"],
+                    "Categories":   ["Religious", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -110,7 +110,7 @@
                     "Url":    "https://59ef525c24caa.streamlock.net/vmtv/vmlatino/chunklist_w349784564.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://fastly.4sqi.net/img/general/558x200/28539980_1raUHzoeX2jhhajpn0lWQz8Dh59LbRRXnzQQmckj_f4.jpg",
-                    "Categories":   ["general", "San Jose"],
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -121,7 +121,7 @@
                     "Url":    "https://liveingesta118.cdnmedia.tv/cristovisionlive/smil:dvrlive.smil/chunklist_b1500000_DVR.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://live-tv-channels.org/pt-data/uploads/logo/co-cristovision-6748.jpg",
-                    "Categories":   ["general", "San Jose"],
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -132,7 +132,7 @@
                     "Url":    "https://5eac7b031d945.streamlock.net/WEB/WEB_source/playlist.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://i.pinimg.com/280x280_RS/31/22/2e/31222efd9118d951fcde8dd511e83f7f.jpg",
-                    "Categories":   ["general", "San Jose"],
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -143,7 +143,7 @@
                     "Url":    "http://190.0.226.17:1935/Telefides/livestream/playlist.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://www.nacion.com/resizer/XJla6D6d49cgJJwV0j8YdImmaTs=/600x400/center/middle/filters:quality(100)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/HAVJDUUUWNENJKFULYLAYQACYM.jpg",
-                    "Categories":   ["general", "San Jose"],
+                    "Categories":   ["General", "San Jose"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 }

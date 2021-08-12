@@ -11,8 +11,8 @@ sub init()
     'Call-back functions for when channel content should be changed
     m.loadChannelContentTask.ObserveField("content", "updateChannelContent")
     m.top.ObserveField("country", "updateChannelContent")
-    m.top.ObserveField("rowItemSelected", "ItemSelected")
-    m.top.ObserveField("rowItemFocused", "FocusChange")
+    'm.top.ObserveField("rowItemSelected", "ItemSelected")
+    'm.top.ObserveField("rowItemFocused", "FocusChange")
     
     'Whenever we update, update the following:
     '- Clipping rectangle
@@ -28,29 +28,20 @@ sub updateChannelContent()
         m.top.country = m.global.countriesContent.countries.keys()[0]
     end if
 
-    '? m.loadChannelContentTask.content[country]
-    
-    'for each categoryNode in m.loadChannelContentTask.content[country].getChildren(-1,0)
-    '    ? categoryNode
-    '    for each channelNode in categoryNode.getChildren(-1,0)
-    '        ? channelNode
-    '    end for
-    'end for
-
     if m.loadChannelContentTask.content <> invalid
 
-        ? "Setting content for " + m.top.country
+        ? "Setting content for: " + m.top.country
         m.top.content = m.loadChannelContentTask.content[m.top.country]
 
-        ? "What is our content?"
-        ? m.top.content
-        ? m.top.content.getChildren(-1, 0).count()
+        '? "What is our content?"
+        '? m.top.content
+        '? m.top.content.getChildren(-1, 0).count().ToStr()
         
         for each categoryNode in m.top.content.getChildren(-1, 0)
-            ?categoryNode
+            ? "Category: " + categoryNode.Title
 
             for each channelNode in categoryNode.getChildren(-1,0)
-                ? channelNode
+                ? "Channel: " + channelNode.Title
             end for
         end for
     end if 

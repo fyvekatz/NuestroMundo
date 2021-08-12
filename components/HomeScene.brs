@@ -2,9 +2,13 @@
 ' ********** Copyright 2016 Roku Corp.  All Rights Reserved. **********
 
 sub init()
+
     ? "==Entering HomeScenes:init=="
 
     m.channelInfoPosterCompact      = m.top.findNode("channelInfoPosterCompact")
+
+    m.bottomBarUpAnimation          = m.top.findNode("bottomBarUp")
+    m.bottomBarDownAnimation        = m.top.findNode("bottomBarDown")
     m.channelsGrid                  = m.top.findNode("channelsGrid")
     m.mainPoster                    = m.top.findNode("mainPoster")
     m.mainPosterTimer               = m.top.findNode("mainPosterTimer")
@@ -27,8 +31,6 @@ sub init()
 
     'Observed fields
     m.mainPosterTimer.ObserveField("fire", "doNormalScroll")
-
-    'Handle video selection
     m.channelsGrid.ObserveField("rowItemSelected", "ChannelChange")
 
     m.top.setFocus(true)
@@ -59,22 +61,27 @@ sub doNormalScroll()
 end sub
 
 sub progressMainPoster(index as Integer)
-    ? "==Entering HomeScenes:mainPosterAnimation=="
+    ? "==Entering HomeScenes:progressMainPoster=="
 
     currentCountry = m.global.countriesContent.countries.keys()[index]
     m.mainPoster.uri = "pkg:/images/poster_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[index]].shortCode  + ".jpeg"
     m.mainPosterAppearAnimation.control = "start"
 
     'Set country on channelInfoPosterCompact
-    ? "What country are we choosing?" + currentCountry + "(" + Str(index) + ")"
+    ? "Changing to " + currentCountry + "(index: " + index.ToStr() + ")"
     m.top.findNode("channelInfoPosterCompact").country = currentCountry
 
-    ? "==Exitting HomeScenes:mainPosterAnimation=="
+    ? "==Exitting HomeScenes:progressMainPoster=="
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean
     ? "==Entering HomeScenes:onKeyEvent (key: " + key + ")=="
     
+    ? "What has focus?"
+
+    ? m.top.hasFocus()
+    ? m.channelsGrid.hasFocus()
+
     handled = false
     if press then
         if m.top.hasFocus()
@@ -113,11 +120,14 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 handled = true
 
             else if key = "down"
+                m.bottomBarUpAnimation.control = "start"
                 m.channelsGrid.setFocus(true)
                 handled = true
             end if
         else if m.channelsGrid.hasFocus()
-            if key = "back"
+            if key = "back" or key = "up"
+                m.bottomBarDownAnimation.control = "start"
+                m.channelsGrid.setFocus(false)
                 m.top.setFocus(true)
                 handled = true
             end if
@@ -131,8 +141,15 @@ end function
 sub ChannelChange()
     ? "==Entering HomeScenes:ChannelChange=="
 
-    m.channelVideo.content = m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
-    m.channelVideo.control = "play"
+    ? m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
+
+    m.channelVideo.content  = m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
+    m.channelVideo.visible  = true
+    m.channelVideo.control  = "play"
+    m.mainPoster.visible    = false
+    m.mainPosterTimer.control = "stop"
+
+    'Return channel grid to the bottom of the screen hidden
 
     ? "==Exitting HomeScenes:ChannelChange=="
 end sub
