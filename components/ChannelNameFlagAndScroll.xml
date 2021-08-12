@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
-
 <component name="ChannelNameFlagAndScroll" extends="Rectangle" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
 	<script type = "text/brightscript" uri = "pkg:/components/ChannelNameFlagAndScroll.brs" />
 	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />
 	
 	<interface>
-		<!--<field id = "itemContent" type = "node" onChange = "itemContentChanged" />
-		<field id = "height" type = "float" onChange= "updateLayout" />
-		<field id = "width" type = "float" onChange = "updateLayout" /> -->
 		<field id = "country" type = "string" onChange = "updateToCountry" />
+		<field id = "backgroundImageDuration" type = "integer" onChange = "updatebackgroundImageDuration" />
 	</interface>
 
 	<children>
@@ -40,7 +36,7 @@
 
 		<ParallelAnimation id="scrollLeftAnimation">
 			<Animation id="scrollCurrentLabelLeftAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -49,7 +45,7 @@
 					fieldToInterp="countryNameLabelCenter.translation"   />
 			</Animation>
 			<Animation id="scrollNextLabelLeftAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -58,7 +54,7 @@
 					fieldToInterp="countryNameLabelRight.translation"   />
 			</Animation>
 			<Animation id="scrollCurrentPosterLeftAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -67,7 +63,7 @@
 					fieldToInterp="countryFlagPosterCenter.translation"   />
 			</Animation>
 			<Animation id="scrollNextPosterLeftAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -79,7 +75,7 @@
 
 		<ParallelAnimation id="scrollRightAnimation">
 			<Animation id="scrollCurrentLabelRightAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -88,7 +84,7 @@
 					fieldToInterp="countryNameLabelCenter.translation"   />
 			</Animation>
 			<Animation id="scrollNextLabelRightAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -97,7 +93,7 @@
 					fieldToInterp="countryNameLabelLeft.translation"   />
 			</Animation>
 			<Animation id="scrollCurrentPosterRightAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -106,7 +102,7 @@
 					fieldToInterp="countryFlagPosterCenter.translation"   />
 			</Animation>
 			<Animation id="scrollNextPosterRightAnimation"
-				duration="1.0"
+				duration="0.9"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
@@ -138,5 +134,12 @@
 			width = "400"
 			opacity="1.0"
 			loadSync="true"/>
+
+		
+		<!-- <ScrollPositionIndicator id="scrollPositionIndicator"
+			height = "25"
+			width  = "500"
+			selectedIndex = "1">
+		</ScrollPositionIndicator> -->
 	</children>
 </component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="ChannelsGrid" extends="RowList" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type = "text/brightscript" uri = "pkg:/components/ChannelsGrid.brs" />
+	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />
+
+	<interface>
+		<field id = "country" type = "string"/>
+	</interface>
+
+	<children>
+	</children>
+</component>

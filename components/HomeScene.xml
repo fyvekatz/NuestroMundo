@@ -4,15 +4,21 @@
 
 <component name="HomeScene" extends="Scene" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
 	<script type = "text/brightscript" uri = "pkg:/components/HomeScene.brs" />
-	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />	
+	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />
 	
 	<children>
+	<!-- consider using m.top.backgroundURI -->
 		<poster id="mainPoster"
-			width="0.0"
-			height="0.0"
+			width="1920"
+			height="1080"
 			opacity="1.0"
 			loadSync="true"
 		translation="[0,0]"/>
+
+		<video id = "channelVideo" 
+			width	=	"1920"
+			height	=	"1080" 
+			visible = 	"false" />
 
 		<!-- Fade in / fade out animations -->
 		<Animation id="mainPosterDisappear"
@@ -41,17 +47,34 @@
 			duration="10"
 		/>
 
-		<ContentNode id="countriesContent" />
-
 		<ChannelNameFlagAndScroll 
 			id = "channelInfoPosterCompact"
 			translation = "[50, 400]"
 			width = "500"
-			height = "325"
-			clippingRect = "[0.0, 0.0, 500, 325]"
+			height = "350"
+			clippingRect = "[0.0, 0.0, 500, 350]"
 			color = "0x000000"
 			inheritParentOpacity = "false"
 			opacity = "0.85"
 		/>
+
+		<Rectangle
+			id = "BottomBar"
+			translation = "[0,0]"
+			width = "1920"
+			height = "1080"
+			color = "0x000000FF"
+			opacity = "0.7">
+			<ChannelsGrid
+				id  = "channelsGrid"
+				itemComponentName = "RowListItems"
+				translation = "[0, 0]"
+				numRows = "5"
+				rowItemSize = "[[267,150]]"
+				rowItemSpacing = "[[30,0]]"
+				itemSize = "[1920,300]"
+				rowFocusAnimationStyle = "floatingFocus"
+				country = "" />
+		</Rectangle>
 	</children>
 </component>

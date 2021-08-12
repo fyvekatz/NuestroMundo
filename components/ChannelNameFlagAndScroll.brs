@@ -13,7 +13,23 @@ sub init()
 	m.leftPoster 	= m.top.findNode("countryFlagPosterLeft")
 	m.rightPoster 	= m.top.findNode("countryFlagPosterRight")
 
-	updateToCountry()
+	'Maintain during any scroll decision a concept of a "previous index"
+	m.currentIndex	= 0
+
+	'Initialize country if not already set
+	if m.top.country = invalid or m.top.country= ""
+		m.top.country = m.global.countriesContent.countries.keys()[0]
+		? "Setting centerLabel to the start of the country list."
+		m.centerLabel.text 	= m.global.countriesContent.countries.keys()[0]
+		m.leftLabel.text 	= m.global.countriesContent.countries.keys()[m.global.countriesContent.countries.count()-1]
+		m.rightLabel.text 	= m.global.countriesContent.countries.keys()[1]
+
+		m.centerPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[0]].shortCode + ".jpeg"
+		m.leftPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[m.global.countriesContent.countries.count()-1]].shortCode + ".jpeg"
+		m.rightPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[1]].shortCode + ".jpeg"
+	end if
+
+	'updateToCountry()
 
 	? "==Exitting ChannelNameFlagAndScroll:init=="
 End sub
@@ -22,86 +38,57 @@ sub updateToCountry()
 
 	? "==Entering ChannelNameFlagAndScroll:updateToCountry=="
 	
-	country = m.top.getField("country")
+	? "Initial current index: " + Str(m.currentIndex)
 
-	'Initialize to the beginning of the country list
-	if country = ""
+	'Identify index of current country
+	targetIndex = getCountryIndex(m.top.country)
 
-		'Maintain during any scroll decision a concept of a "previous index"
-		m.previousIndex = 0
-		m.currentIndex	= 0
+	? "Target country is " + m.top.country
+	? "Target index is " + Str(targetIndex)
 
-		? "Setting centerLabel to the start of the country list."
-		m.centerLabel.text 	= m.global.countriesContent.getChild(0).name
-		m.leftLabel.text 	= m.global.countriesContent.getChild(m.global.countriesContent.getChildCount()-1).name
-		m.rightLabel.text 	= m.global.countriesContent.getChild(1).name
+	'Is it faster to get there by scrolling "left" or "right"?
+	
+	'If targetIndex > currentIndex
+	if targetIndex > m.currentIndex
 
-		m.centerPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.getChild(0).shortCode + ".jpeg"
-		m.leftPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.getChild(m.global.countriesContent.getChildCount()-1).shortCode + ".jpeg"
-		m.rightPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.getChild(1).shortCode + ".jpeg"
+		? "New index is greater than previous index (" + Str(targetIndex) + ">" + Str(m.currentIndex) + ")."
+		forwardDistance = targetIndex - m.currentIndex
+		backDistance	= m.currentIndex + (m.global.countriesContent.countries.count() - targetIndex)
+
+		? "Forward distance: " + Str(forwardDistance)
+		? "Back distance:" + Str(backDistance)
+
+	'Else newIndex < currentIndex
 	else
 
-		? "Searching for '" + country + "' in countries list." 
-		found = false
-		index = -1
+		? "New index is less than current index (" + Str(targetIndex) + "<" + Str(m.currentIndex) + ")."
+		forwardDistance = (m.global.countriesContent.countries.count() - m.currentIndex) + targetIndex
+		backDistance = m.currentIndex - targetIndex
 
-		'Search the countries list for country which can be either a country name or a short code.
-		while found = false
-			index++
-			if m.global.countriesContent.getChild(index).name = country or m.global.countriesContent.getChild(index).shortCode = country
-				found = true
-			end if
-		end while
-
-		'Note the index to which we want to navigate.
-		newIndex = index
-
-		? "New index chosen is " + Str(newIndex)
-
-		'Is it faster to get there by scrolling "left" or "right"?
-		
-		'If newIndex > previousIndex
-		if newIndex > m.previousIndex
-
-			? "New index is greater than previous index (" + Str(newIndex) + ">" + Str(m.previousIndex) + ")."
-			forwardDistance = newIndex - m.previousIndex
-			backDistance	= m.previousIndex + (m.global.countriesContent.getChildCount() - newIndex)
-
-			? "Forward distance: " + Str(forwardDistance)
-			? "Back distance:" + Str(backDistance)
-
-		'Else newIndex < previousIndex
-		else
-
-			? "New index is less than previous index (" + Str(newIndex) + "<" + Str(m.previousIndex)
-			forwardDistance = (m.global.countriesContent.getChildCount() - m.previousIndex) + newIndex
-			backDistance = m.previousIndex - newIndex
-
-			? "Forward distance: " + Str(forwardDistance)
-			? "Back distance:" + Str(backDistance)
-		end if
-		
-		test = 0
-
-		'Whichever's smaller, scroll that way.
-		if forwardDistance < backDistance
-
-			? "Scrolling left..."
-			while m.currentIndex <> newIndex
-				scrollLeft()
-			end while
-			? "Scroll complete."
-		else
-			? "Scrolling right..."
-			while m.currentIndex <> newIndex
-				scrollRight()
-			end while
-			? "Scroll complete."
-		end if
-
-		'The new becomes the old
-		m.previousIndex = newIndex
+		? "Forward distance: " + Str(forwardDistance)
+		? "Back distance:" + Str(backDistance)
 	end if
+
+	'Note previous index prior to animating
+	m.previousIndex = m.currentIndex
+	
+	'Whichever's smaller, scroll that way.
+	if forwardDistance < backDistance
+
+		? "Scrolling left..."
+		while m.currentIndex <> targetIndex
+			scrollLeft()
+		end while
+		? "Scroll complete."
+	else
+		? "Scrolling right..."
+		while m.currentIndex <> targetIndex
+			scrollRight()
+		end while
+		? "Scroll complete."
+	end if
+
+	? "Final current index: " + Str(m.currentIndex)
 
 	? "==Exitting ChannelNameFlagAndScroll:updateToCountry=="
 end sub
@@ -109,11 +96,7 @@ end sub
 sub scrollLeft()
 	? "==Entering ChannelNameFlagAndScroll:scrollLeft=="
 
-	if m.currentIndex = m.global.countriesContent.getChildCount() - 1
-		rightIndex = 0
-	else 
-		rightIndex = m.currentIndex + 1
-	end if
+	rightIndex = incrementCountryIndex(m.currentIndex)
 
 	'Set the new labels
 	
@@ -121,15 +104,15 @@ sub scrollLeft()
 	m.leftLabel.visible		= false
 	m.rightLabel.visible	= true
 	
-	m.centerLabel.text = m.global.countriesContent.getChild(m.currentIndex).name
-	m.rightLabel.text  = m.global.countriesContent.getChild(rightIndex).name
+	m.centerLabel.text = m.global.countriesContent.countries.keys()[m.currentIndex]
+	m.rightLabel.text  = m.global.countriesContent.countries.keys()[rightIndex]
 
 	m.centerPoster.visible 	= true
 	m.leftPoster.visible	= false
 	m.rightPoster.visible	= true
 
-	m.centerPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.getChild(m.currentIndex).shortCode + ".jpeg"
-	m.rightPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.getChild(rightIndex).shortCode + ".jpeg"
+	m.centerPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[m.currentIndex]].shortCode + ".jpeg"
+	m.rightPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[rightIndex]].shortCode + ".jpeg"
 
 	m.top.findNode("scrollLeftAnimation").control = "start"
 
@@ -140,11 +123,7 @@ end sub
 sub scrollRight()
 	? "==Entering ChannelNameFlagAndScroll:scrollRight=="
 
-	if m.currentIndex = 0
-		leftIndex = m.global.countriesContent.getChildCount() - 1
-	else 
-		leftIndex = m.currentIndex - 1
-	end if
+	leftIndex = decrementCountryIndex(m.currentIndex)
 
 	'Set the new labels
 	
@@ -152,15 +131,15 @@ sub scrollRight()
 	m.leftLabel.visible		= true
 	m.rightLabel.visible	= false
 
-	m.centerLabel.text = m.global.countriesContent.getChild(m.currentIndex).name
-	m.leftLabel.text   = m.global.countriesContent.getChild(leftIndex).name
+	m.centerLabel.text = m.global.countriesContent.countries.keys()[m.currentIndex]
+	m.leftLabel.text   = m.global.countriesContent.countries.keys()[leftIndex]
 	
 	m.centerPoster.visible 	= true
 	m.leftPoster.visible	= true
 	m.rightPoster.visible	= false
 
-	m.centerPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.getChild(m.currentIndex).shortCode + ".jpeg"
-	m.leftPoster.uri	= "pkg:/images/flag_" + m.global.countriesContent.getChild(leftIndex).shortCode + ".jpeg"
+	m.centerPoster.uri 	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[m.currentIndex]].shortCode + ".jpeg"
+	m.leftPoster.uri	= "pkg:/images/flag_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[leftIndex]].shortCode + ".jpeg"
 
 	m.top.findNode("scrollRightAnimation").control = "start"
 

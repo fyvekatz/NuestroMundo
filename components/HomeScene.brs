@@ -2,102 +2,137 @@
 ' ********** Copyright 2016 Roku Corp.  All Rights Reserved. **********
 
 sub init()
-    ? "== Entering HomeScenes init=="
+    ? "==Entering HomeScenes:init=="
 
+    m.channelInfoPosterCompact      = m.top.findNode("channelInfoPosterCompact")
+    m.channelsGrid                  = m.top.findNode("channelsGrid")
+    m.mainPoster                    = m.top.findNode("mainPoster")
+    m.mainPosterTimer               = m.top.findNode("mainPosterTimer")
+    m.mainPosterAppearAnimation     = m.top.findNode("mainPosterAppear")
+    m.mainPosterDisappearAnimation  = m.top.findNode("mainPosterDisappear")
+    m.channelVideo                  = m.top.findNode("channelVideo")
+
+    
     'Country list loaded in subroutine
     loadCountriesContent(m.global)
     
-    m.numberMainPosters     = m.global.countriesContent.getChildCount()
-    m.currentPosterIndex    = 1
-    firstCountry            = m.global.countriesContent.getChild(m.currentPosterIndex-1)
+    m.currentPosterIndex    = 0
+    firstCountry            = m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[m.currentPosterIndex]]
     
-
     'Initialize main poster
-    m.mainPoster        = m.top.findNode("mainPoster")
     m.mainPoster.uri    = "pkg:/images/poster_" + firstCountry.shortCode  + ".jpeg"
 
     'Initialize main poster timer
-    m.mainPosterTimer          = m.top.findNode("mainPosterTimer")
     m.mainPosterTimer.control  = "start"
-    m.mainPosterTimer.ObserveField("fire", "mainPosterAnimation")
 
-    m.mainPosterAppearAnimation     = m.top.findNode("mainPosterAppear")
-    m.mainPosterDisappearAnimation  = m.top.findNode("mainPosterDisappear")
-    m.mainPosterDisappearAnimation.ObserveField("state", "mainPosterAnimation")
+    'Observed fields
+    m.mainPosterTimer.ObserveField("fire", "doNormalScroll")
 
-    m.mainPoster.setFocus(true)
+    'Handle video selection
+    m.channelsGrid.ObserveField("rowItemSelected", "ChannelChange")
 
-    ? "== Exitting HomeScenes init=="
+    m.top.setFocus(true)
+
+    ? "==Exitting HomeScenes:init=="
 end sub
 
-sub mainPosterAnimation()
-    ? "==Entering changeMainPoster=="
+sub doNormalScroll()
 
-    'If poster is visible
-    if m.mainPoster.opacity = 1.0
+    'Progress main poster
 
-        ? "Make poster disappear"
-        m.mainPosterDisappearAnimation.control = "start"
-
-    'If poster is not visible, cycle to next poster and display
+    'Determine next index
+    if m.currentPosterIndex < m.global.countriesContent.countries.count()-1
+        m.currentPosterIndex++
     else
-        ' If the current poster index is already pointing to the last poster, reset
-        if m.currentPosterIndex = m.numberMainPosters
-            m.currentPosterIndex = 1
-        ' Normal case. Transition to the next two posters
-        else m.currentPosterIndex++
-        end if
-
-        currentCountry = m.global.countriesContent.getChild(m.currentPosterIndex-1)
-        m.mainPoster.uri = "pkg:/images/poster_" + currentCountry.shortCode  + ".jpeg"
-        m.mainPosterAppearAnimation.control = "start"
-
-        'Set country on channelInfoPosterCompact
-        m.top.findNode("channelInfoPosterCompact").country = currentCountry.name
-
+        m.currentPosterIndex = 0
     end if
 
-    ? "==Exitting changeMainPoster=="
+    ' Hide poster
+    m.mainPosterDisappearAnimation.control = "start"
+    'Try to make the scroll look concurrent
+    country                             = m.global.countriesContent.countries.keys()[m.currentPosterIndex]
+    m.channelInfoPosterCompact.country  = country     
+    m.channelsGrid.country              = country
+
+    progressMainPoster(m.currentPosterIndex)
+
+end sub
+
+sub progressMainPoster(index as Integer)
+    ? "==Entering HomeScenes:mainPosterAnimation=="
+
+    currentCountry = m.global.countriesContent.countries.keys()[index]
+    m.mainPoster.uri = "pkg:/images/poster_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[index]].shortCode  + ".jpeg"
+    m.mainPosterAppearAnimation.control = "start"
+
+    'Set country on channelInfoPosterCompact
+    ? "What country are we choosing?" + currentCountry + "(" + Str(index) + ")"
+    m.top.findNode("channelInfoPosterCompact").country = currentCountry
+
+    ? "==Exitting HomeScenes:mainPosterAnimation=="
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean
-
-    ? "==Entering onKeyEvent (key: " + key + ")=="
+    ? "==Entering HomeScenes:onKeyEvent (key: " + key + ")=="
     
     handled = false
     if press then
+        if m.top.hasFocus()
+            if key = "left" OR key = "right"
 
-        if key = "left" OR key = "right"
-
-            'Force poster to hide and then perform a transition.
-            'If an animation is current executing, handle it.
-
-            'Stop the animations (in case they're firing at the moment) and blacken the Poster.
-            m.mainPosterAppearAnimation.control = "stop"
-            m.mainPosterDisappearAnimation.control = "stop"
-            m.mainPoster.opacity = 0.0
-
-            'For the timer to start over
-            m.mainPosterTimer.control = "stop"
-            m.mainPosterTimer.control = "start"
+                ? "Manually scroll through countries"
             
-            'The poster animation is going to advance the currentPosterIndex by one.
-            'If the key press is a "right" ("forward"), do nothing and do the animation.
-            'If the key press is a "left" ("back"), move currentPosterIndex back two and do the animation.
-            if key = "left"
-                if (m.currentPosterIndex - 2) > 0
-                    m.currentPosterIndex = m.currentPosterIndex-2
-                else
-                    m.currentPosterIndex = m.numberMainPosters + (m.currentPosterIndex - 2)
-                end if
-            end if
+                'Force poster to hide and then perform a transition.
+                'If an animation is current executing, handle it.
 
-            mainPosterAnimation()
-            handled = true
+                'Stop the animations (in case they're firing at the moment) and blacken the Poster.
+                m.mainPosterAppearAnimation.control = "stop"
+                m.mainPosterDisappearAnimation.control = "stop"
+                m.mainPoster.opacity = 0.0
+
+                'For the timer to start over
+                m.mainPosterTimer.control = "stop"
+                m.mainPosterTimer.control = "start"
+                
+                'The poster animation is going to advance the currentPosterIndex by one.
+                'If the key press is a "right" ("forward"), do nothing and do the animation.
+                'If the key press is a "left" ("back"), move currentPosterIndex back two and do the animation.
+
+                '? "Before index: " + Str(m.currentPosterIndex)
+
+                if key = "left"
+                    m.currentPosterIndex = decrementCountryIndex(m.currentPosterIndex)
+                else
+                    m.currentPosterIndex = incrementCountryIndex(m.currentPosterIndex)
+                end if
+
+                '? "Target index: " + Str(m.currentPosterIndex)
+                m.channelsGrid.country = m.global.countriesContent.countries.keys()[m.currentPosterIndex]
+                progressMainPoster(m.currentPosterIndex)
+
+                handled = true
+
+            else if key = "down"
+                m.channelsGrid.setFocus(true)
+                handled = true
+            end if
+        else if m.channelsGrid.hasFocus()
+            if key = "back"
+                m.top.setFocus(true)
+                handled = true
+            end if
         end if
     end if
 
-    ? "==Exitting onKeyEvent=="
-
+    ? "==Exitting HomeScenes:onKeyEvent=="
     return handled
 end function
+
+sub ChannelChange()
+    ? "==Entering HomeScenes:ChannelChange=="
+
+    m.channelVideo.content = m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
+    m.channelVideo.control = "play"
+
+    ? "==Exitting HomeScenes:ChannelChange=="
+end sub
