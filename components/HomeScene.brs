@@ -7,16 +7,23 @@ sub init()
 
     m.channelInfoPosterCompact      = m.top.findNode("channelInfoPosterCompact")
 
-    m.bottomBarUpAnimation          = m.top.findNode("bottomBarUp")
-    m.bottomBarDownAnimation        = m.top.findNode("bottomBarDown")
     m.channelsGrid                  = m.top.findNode("channelsGrid")
     m.mainPoster                    = m.top.findNode("mainPoster")
     m.mainPosterTimer               = m.top.findNode("mainPosterTimer")
     m.mainPosterAppearAnimation     = m.top.findNode("mainPosterAppear")
     m.mainPosterDisappearAnimation  = m.top.findNode("mainPosterDisappear")
     m.channelVideo                  = m.top.findNode("channelVideo")
+    m.bottomBar                     = m.top.findNode("bottomBar")
+    m.bottomBarTimer                = m.top.findNode("bottomBarTimer")
 
-    
+    m.channelInfoPosterCompactDisappearAnimation = m.top.findNode("channelNameFlagAndScrollDisappear")
+    m.channelInfoPosterCompactAppearAnimation = m.top.findNode("channelNameFlagAndScrollAppear")
+    m.videoPlayingHideWidgetsAnimation = m.top.findNode("videoPlayingHideWidgets")
+    m.videoPlayingShowWidgetsAnimation = m.top.findNode("videoPlayingShowWidgets")
+    m.videoPlayingHideWidgetsTimer = m.top.findNode("videoPlayingHideWidgets")
+
+    ? m.videoPlayingShowWidgetsAnimation
+
     'Country list loaded in subroutine
     loadCountriesContent(m.global)
     
@@ -32,7 +39,8 @@ sub init()
     'Observed fields
     m.mainPosterTimer.ObserveField("fire", "doNormalScroll")
     m.channelsGrid.ObserveField("rowItemSelected", "ChannelChange")
-
+    m.channelVideo.ObserveField("state", "VideoStateChanged")
+    m.videoPlayingHideWidgetsTimer.ObserveField("fire", "videoPlayingHideWidgets")
     m.top.setFocus(true)
 
     ? "==Exitting HomeScenes:init=="
@@ -77,14 +85,13 @@ end sub
 function onKeyEvent(key as String, press as Boolean) as Boolean
     ? "==Entering HomeScenes:onKeyEvent (key: " + key + ")=="
     
-    ? "What has focus?"
-
-    ? m.top.hasFocus()
-    ? m.channelsGrid.hasFocus()
-
     handled = false
+
     if press then
-        if m.top.hasFocus()
+
+        ' If player main seen is showing
+        if m.channelVideo.visible = false
+        
             if key = "left" OR key = "right"
 
                 ? "Manually scroll through countries"
@@ -118,20 +125,49 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                 progressMainPoster(m.currentPosterIndex)
 
                 handled = true
-
-            else if key = "down"
-                m.bottomBarUpAnimation.control = "start"
-                m.channelsGrid.setFocus(true)
-                handled = true
-            end if
-        else if m.channelsGrid.hasFocus()
-            if key = "back" or key = "up"
-                m.bottomBarDownAnimation.control = "start"
+            else if key = "back" or key = "up"
                 m.channelsGrid.setFocus(false)
                 m.top.setFocus(true)
                 handled = true
+            else if key = "down"
+                m.channelsGrid.setFocus(true)
+                m.mainPosterTimer.control = "stop"
+                handled = true
             end if
-        end if
+
+        ' If player is visible
+        else
+
+            ' If chanelsGrid is visible, we want to return to the video.
+            if channelsGridVisible()
+                if key = "back" or (key = "up" and m.channelsGrid.rowItemSelected[0] = 1)
+                   
+                    'hide the onscreen widgets
+                    m.videoPlayingHideWidgetsAnimation.control = "start"
+                    m.channelsGrid.setFocus(false)
+                    m.top.setFocus(true)
+                    handled = true
+                end if     
+           
+            ' If chanelsGrid is not visible, we want to stop the video and return the main screen.
+            else
+
+                ' Show onscreen widgets
+                if key = "down" or key = "up"
+                    ? m.videoPlayingShowWidgetsAnimation
+    
+                    m.videoPlayingShowWidgetsAnimation.control = "start"
+                    m.channelsGrid.setFocus(true)
+
+                ' Go back to the main screen
+                else if key = "back" 
+                    m.channelVideo.control = "stop"
+                    m.mainPoster.visible = "true"
+                    m.videoPlayingShowWidgetsAnimation.control = "start"
+                    m.mainPosterTimer.control = "start"
+                end if
+            end if
+        end if    
     end if
 
     ? "==Exitting HomeScenes:onKeyEvent=="
@@ -143,13 +179,46 @@ sub ChannelChange()
 
     ? m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
 
-    m.channelVideo.content  = m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
+    
+    m.channelVideo.content  = m.channelsGrid.content.getChild(m.channelsGrid.rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
     m.channelVideo.visible  = true
     m.channelVideo.control  = "play"
     m.mainPoster.visible    = false
     m.mainPosterTimer.control = "stop"
 
-    'Return channel grid to the bottom of the screen hidden
+    'Return focus to the main scene. If the grid maintains control, won't be able to control.
+    m.channelsGrid.setFocus(false)
+    m.top.setFocus(true)
 
     ? "==Exitting HomeScenes:ChannelChange=="
 end sub
+
+sub VideoStateChanged()
+    ? "==Entering HomeScenes:VideoStateChanged=="
+
+    ' Hide the ChannelNameFlagAndScroll widget
+    if m.channelVideo.state = "playing"
+
+        m.videoPlayingHideWidgetsTimer.control = "start"
+
+    else if m.channelVideo.state = "stopped"
+        m.channelVideo.visible = "false"
+        m.videoPlayingShowWidgetsAnimation.control = "start"
+        m.mainPosterAppearAnimation.control = "start"
+        m.channelInfoPosterCompactAppearAnimation.control = "start"
+    end if
+
+    ? "==Exiting HomeScenes:VideoStateChanged=="
+end sub
+
+sub videoPlayingHideWidgets()
+    m.videoPlayingHideWidgetsAnimation.control = "start"
+end sub
+
+function channelsGridVisible() as boolean
+    if m.bottomBar.translation[1] >= 1080
+        return false
+    end if 
+
+    return true
+end function

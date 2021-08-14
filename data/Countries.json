@@ -85,7 +85,7 @@
                     "Title":         "Quince UCR",
                     "channel":      "15",
                     "region":       "San Jose",
-                    "Url":    "http://163.178.170.127:1935/quinceucr/live.stream_720p/chunklist_w1053428288.m3u8",
+                    "URL":    "http://163.178.170.127:1935/quinceucr/live.stream_720p/chunklist_w1053428288.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":      "https://www.ucr.ac.cr/medios/imagenes/2021/607466deea50560713b52a749blogocanal15.jpg",
                     "Categories":   ["Education", "San Jose"],

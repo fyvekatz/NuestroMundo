@@ -11,12 +11,6 @@ sub init()
     'Call-back functions for when channel content should be changed
     m.loadChannelContentTask.ObserveField("content", "updateChannelContent")
     m.top.ObserveField("country", "updateChannelContent")
-    'm.top.ObserveField("rowItemSelected", "ItemSelected")
-    'm.top.ObserveField("rowItemFocused", "FocusChange")
-    
-    'Whenever we update, update the following:
-    '- Clipping rectangle
-    'm.top.setField("ClippingRect", "[0.0, 0.0, 0.0, 0.0]")
 
     ? "==Exiting ChannelsGrid:init=="
 end sub
@@ -52,9 +46,9 @@ end sub
 sub FocusChange()
     ? "==Entering ChannelsGrid:FocusChange=="
 
-    ? m.top.rowItemFocused
-    ? m.top.content.getChild(m.top.rowItemFocused[0])
-    ? m.top.content.getChild(m.top.rowItemFocused[0]).getChild(m.top.rowItemFocused[1])
+    '? m.top.rowItemFocused
+    '? m.top.content.getChild(m.top.rowItemFocused[0])
+    '? m.top.content.getChild(m.top.rowItemFocused[0]).getChild(m.top.rowItemFocused[1])
 
     ? "==Exiting ChannelsGrid:FocusChange=="
 end sub
@@ -65,9 +59,9 @@ sub ItemSelected()
     ' Necessary line. Noticed that the first time this function is called, there's no row item selected
     if m.top.rowItemSelected <> invalid and m.top.rowItemSelected.count() <> 0
 
-        ? m.top.rowItemSelected
-        ? m.top.content.getChild(m.top.rowItemSelected[0])
-        ? m.top.content.getChild(m.top.rowItemSelected[0]).getChild(m.top.rowItemSelected[1])
+        '? m.top.rowItemSelected
+        '? m.top.content.getChild(m.top.rowItemSelected[0])
+        '? m.top.content.getChild(m.top.rowItemSelected[0]).getChild(m.top.rowItemSelected[1])
     end if
 
     ? "==Exitting ChannelsGrid:ItemSelected=="

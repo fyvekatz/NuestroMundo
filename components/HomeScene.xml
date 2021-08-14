@@ -60,11 +60,12 @@
 
 		<Rectangle
 			id = "bottomBar"
-			translation = "[0,1080]"
+			translation = "[0,810]"
 			width = "1920"
 			height = "1080"
 			color = "0x000000FF"
-			opacity = "0.7">
+			opacity = "0.7"
+			visible = "true">
 			<ChannelsGrid
 				id  = "channelsGrid"
 				itemComponentName = "RowListItems"
@@ -74,28 +75,57 @@
 				rowItemSpacing = "[[30,0]]"
 				itemSize = "[1920,300]"
 				rowFocusAnimationStyle = "floatingFocus"
-				rowLabelOffset = "[10, 10]"
+				rowLabelOffset = "[[10,10]]"
 				showRowLabel = "[true]"
 				country = "" />
 		</Rectangle>
 
-		<Animation id="bottomBarUp"
-				duration="0.25"
+		<ParallelAnimation id="videoPlayingHideWidgets">
+			<Animation id="channelNameFlagAndScrollDisappear"
+				duration="0.75"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
 					key="[0.0, 1.0]"
-					keyValue="[ [0, 1080], [0,810] ]"
-					fieldToInterp="bottomBar.translation"   />
-		</Animation>
-		<Animation id="bottomBarDown"
-				duration="0.25"
+					keyValue="[ [25, 300], [-525, 300] ]"
+					fieldToInterp="channelInfoPosterCompact.translation"   />
+			</Animation>
+			<Animation id="bottomBarDisappear"
+				duration="0.75"
 				repeat="false"
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
 					key="[0.0, 1.0]"
 					keyValue="[ [0,810], [0, 1080] ]"
 					fieldToInterp="bottomBar.translation"   />
-		</Animation>
+			</Animation>
+		</ParallelAnimation>
+
+		<Timer
+			id="videoPlayingHideWidgetsTimer"
+			repeat="false"
+			duration="7"
+		/>
+
+		<ParallelAnimation id="videoPlayingShowWidgets">
+			<Animation id="channelNameFlagAndScrollAppear"
+				duration="0.75"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [-525, 300], [25, 300] ]"
+					fieldToInterp="channelInfoPosterCompact.translation"   />
+			</Animation>
+			<Animation id="bottomBarAppear"
+				duration="0.75"
+				repeat="false"
+				easeFunction="linear">
+				<Vector2DFieldInterpolator
+					key="[0.0, 1.0]"
+					keyValue="[ [0, 1080], [0,810] ]"
+					fieldToInterp="bottomBar.translation"   />
+			</Animation>
+		</ParallelAnimation>
 	</children>
 </component>
