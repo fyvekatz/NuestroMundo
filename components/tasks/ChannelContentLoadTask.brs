@@ -18,6 +18,7 @@ Sub loadContent()
 
         'First, make an associative array of channel categories to channels (content nodes) and populate it
         channelsByCategory = {}
+        channelsByRegion = {}
 
         'Next, make the country-specific content node where they will be stored.
         countryContentItem = createObject("RoSGNode","ContentNode")
@@ -30,20 +31,35 @@ Sub loadContent()
 
             for each category in channel.categories
 
-                ? "Creating node for " + category + "."
+                ? "Inserting into " + category + "."
 
                 channelContentItem = createObject("RoSGNode","ContentNode")
                 channelContentItem.HDPosterUrl  = channel.HDPosterUrl
                 channelContentItem.Url          = channel.Url
                 channelContentItem.Title        = channel.Title
 
-
+            
                 if invalid = channelsByCategory[category]
                     channelsByCategory[category] = []
                 end if
 
                 channelsByCategory[category].push(channelContentItem)
             end for
+
+            ? "Inserting into " + channel.region + "."
+
+                channelContentItem = createObject("RoSGNode","ContentNode")
+                channelContentItem.HDPosterUrl  = channel.HDPosterUrl
+                channelContentItem.Url          = channel.Url
+                channelContentItem.Title        = channel.Title
+
+            'Do the same for the channel's region
+            if invalid = channelsByRegion[channel.region]
+                channelsByRegion[channel.region] = []
+            end if
+
+            channelsByRegion[channel.region].push(channelContentItem)
+
         end for
 
         'Make "Featured appear first"
@@ -54,8 +70,17 @@ Sub loadContent()
         countryContentItem.appendChild(featuredCategoryContentNode)
         channelsByCategory.delete("Featured")
 
-        for each category in channelsByCategory
+        'Load the channel lists by region
+        for each region in channelsByRegion
 
+            regionContentItem = createObject("RoSGNode","ContentNode")
+            regionContentItem.Title = region
+            regionContentItem.insertChildren(channelsByRegion[region], 0)
+            countryContentItem.appendChild(regionContentItem)
+        end for
+
+        'Load the channel lists by category
+        for each category in channelsByCategory
 
             categoryContentItem = createObject("RoSGNode","ContentNode")
             categoryContentItem.Title = category
@@ -63,18 +88,18 @@ Sub loadContent()
             countryContentItem.appendChild(categoryContentItem)
         end for
 
-        '? "Content node for " + country
-        '? countryContentItem
+        ? "Content node for " + country
+        ? countryContentItem
 
         for each categoryContentItem in countryContentItem.getChildren(-1, 0)
 
-            '? "Content node for " + categoryContentItem.TITLE
-            '? categoryContentItem
+            ? "Content node for " + categoryContentItem.TITLE
+            ? categoryContentItem
 
             for each channelContentItem in categoryContentItem.getChildren(-1, 0)
 
-                '? "Content node for " + channelContentItem.TITLE + " " + channelContentItem.channel
-                '? channelContentItem
+                ? "Content node for " + channelContentItem.TITLE
+                ? channelContentItem
             end for
         end for
 

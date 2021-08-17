@@ -17,9 +17,7 @@
 			id = "poster"
 			height = "150"
 			width = "267"
-			loadWidth = "267"
-			loadHeight = "150"
-			loadDisplayMode = "scaleToFit">
+			loadDisplayMode = "scaleToFill">
 			<Label
 				id = "label"
 				height = "30"

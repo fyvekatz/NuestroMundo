@@ -1,149 +1,314 @@
 {
-    "Categories": ["Featured", "General", "News", "Religious", "Entertainment", "Talk", "Culture", "Education", "Public"],
     "countries":{
             "Costa Rica": {
                 "shortCode":    "CR",
                 "channels": [
                 {
-                    "Title":         "Repretel 2",
-                    "channel":      "2",
-                    "region":       "San Jose",
-                    "Url":    "https://cr-repretel-canal2-live.ned.media/repretel/canal2/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzMzgwLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiIyZjQ2OWY4M2Y2NTdkYTMyYmNkMWFlNjdlMzc1ZmUxZTkzMDhhN2U2In0=",
-                    "guideURL":     "",
-                    "HDPosterUrl":      "https://yt3.ggpht.com/ytc/AKedOLSalPTzbA5vd1NjQo6O28oTYy2b7qSZS0R7-Q55=s900-c-k-c0x00ffffff-no-rj",
-                    "Categories":   ["Featured", "News", "Talk", "San Jose"],
-                    "StreamFormat": "hls",
-                    "Live":         "true"
-                },
-                {
-                    "Title":        "Repretel 4",
-                    "channel":      "4",
-                    "region":       "San Jose",
-                    "Url":          "https://cr-repretel-canal4-live.ned.media/repretel/canal4/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDM5LCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI3Zjc1MWQzNWIxZGNjOTk3YzAzZWExMWI3ZDNkMmFmMjQ2MGU5Njg1In0=",
-                    "guideURL":     "",
-                    "HDPosterUrl":  "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Repretel_4_logo.png/600px-Repretel_4_logo.png",
-                    "Categories":   ["Featured", "General", "San Jose"],
-                    "StreamFormat": "hls",
-                    "Live":         "true"
-                },
-                {
-                    "Title":        "Repretel 6",
-                    "channel":      "6",
-                    "region":       "San Jose",
-                    "Url":          "https://cr-repretel-canal6-live.ned.media/repretel/canal6/smil:live.smil/playlist.m3u8?iut=eyJwYXJhbXMiOnsiZXhwIjoxNjI4MzQzNDcxLCJzZXNzaW9uIjoiNzMuMTM3LjYxLjI0MyIsIndoaXRlbGlzdCI6WyI3My4xMzcuNjEuMjQzIl19LCJzaWduYXR1cmUiOiI4ZjA2N2RkMzkzNTRiOWU5ZjIzMzQzYTViNTliOWQ2NDc5MjlkMjJmIn0=",
-                    "guideURL":     "",
-                    "HDPosterUrl":  "https://upload.wikimedia.org/wikipedia/commons/0/0a/Repretel_Canal_6_2008-2010.png",
-                    "Categories":   ["General", "San Jose"],
-                    "StreamFormat": "hls",
-                    "Live":         "true"
-                },
-                {
-                    "Title":        "Teletica 7",
-                    "channel":      "7",
-                    "region":       "San Jose",
-                    "Url":          "https://www.dailymotion.com/cdn/live/video/x29e3wg.m3u8?sec=RRaQWohHhS0MzAc4pW5WUBzv-k-ummikSSlqOm8v4UNS2BPZa2uwFSdHbaut7vNg0eBbxpk7jNivBIHbEC2Myw",
-                    "guideURL":     "",
-                    "HDPosterUrl":  "https://pbs.twimg.com/profile_images/1346206385013403649/gJhI7QoL.jpg",
-                    "Categories":   ["Featured", "General", "Entertainment", "San Jose"],
-                    "StreamFormat": "hls",
-                    "Live":         "true"
-                },
-                {
-                    "Title":         "Teledario",
-                    "channel":      "8",
+                    "Title":        "Teledario",
                     "region":       "San Jose",
                     "Url":          "https://mdstrm.com/live-stream-playlist/5a7b1e63a8da282c34d65445.m3u8",
-                    "guideURL":     "",
-                    "HDPosterUrl":  "https://vignette.wikia.nocookie.net/logopedia/images/5/5a/Multimedios_Televisi%C3%B3n_2015.png/revision/latest?cb=20150818212223",
-                    "Categories":   ["General", "San Jose"],
+                    "guideURL":     "https://www.telediario.cr/television/programacion",
+                    "HDPosterUrl":  "pkg:/images/logo_teledario.jpeg",
+                    "Categories":   ["Featured", "General"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Sinart",
-                    "channel":      "13",
+                    "Title":        "Sinart 13",
                     "region":       "San Jose",
-                    "Url":    "https://www.dailymotion.com/cdn/live/video/x7vh8g3.m3u8?sec=CuMr-u1XeSxJYScbAhGkYsmT3XVSAWwfkaNA3SIZytjlWi2XjSxnUKFyyEX-SKiKOlEb1EuJFqtUDrsAYgO-kA",
+                    "Url":          "https://stream-01.nyc.dailymotion.com/sec(0HE75RGSqqnhnSdEMl12ZSPHawR3z2q-5odNRTAOGKQ)/dm/3/x7vh8g3/d/live-2.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://www.elmundo.cr/wp-content/uploads/2017/06/sinart-1024x676.jpg",
-                    "Categories":   ["General", "Culture", "Education", "News", "Public", "San Jose"],
+                    "HDPosterUrl":  "pkg:/images/logo_sinart.jpeg",
+                    "Categories":   ["Featured", "General"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Tv Sur",
-                    "channel":      "14",
+                    "Title":        "Quince UCR",
                     "region":       "San Jose",
-                    "Url":    "https://5bf8041cb3fed.streamlock.net:443/TVSURCANAL14/TVSURCANAL14/playlist.m3u8",
+                    "URL":          "http://163.178.170.127:1935/quinceucr/live.stream_720p/chunklist_w1053428288.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://pbs.twimg.com/profile_images/1314328513349144577/7dTHR_gg_400x400.jpg",
-                    "Categories":   ["General", "San Jose"],
+                    "HDPosterUrl":  "https://www.ucr.ac.cr/medios/imagenes/2021/607466deea50560713b52a749blogocanal15.jpg",
+                    "Categories":   ["Entertainment"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Quince UCR",
-                    "channel":      "15",
+                    "Title":        "VM latino",
                     "region":       "San Jose",
-                    "URL":    "http://163.178.170.127:1935/quinceucr/live.stream_720p/chunklist_w1053428288.m3u8",
+                    "Url":          "https://59ef525c24caa.streamlock.net/vmtv/vmlatino/chunklist_w349784564.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://www.ucr.ac.cr/medios/imagenes/2021/607466deea50560713b52a749blogocanal15.jpg",
-                    "Categories":   ["Education", "San Jose"],
+                    "HDPosterUrl":  "pkg:/images/logo_vm_latino.jpeg",
+                    "Categories":   ["Music"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "TV Enlace",
-                    "channel":      "27",
+                    "Title":        "Cristovision",
                     "region":       "San Jose",
-                    "Url":    "https://5d16127744872.streamlock.net/TVUNO/TVUNO/playlist.m3u8",
+                    "Url":          "https://liveingesta118.cdnmedia.tv/cristovisionlive/smil:dvrlive.smil/chunklist_b1500000_DVR.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://serenotv.com/wp-content/uploads/2020/10/Canal-27-teleuno-en-vivo.jpg",
-                    "Categories":   ["Religious", "San Jose"],
+                    "HDPosterUrl":  "https://live-tv-channels.org/pt-data/uploads/logo/co-cristo-vision-5336.jpg",
+                    "Categories":   ["Religious"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "VM latino",
-                    "channel":      "29",
+                    "Title":        "Esperanza TV",
                     "region":       "San Jose",
-                    "Url":    "https://59ef525c24caa.streamlock.net/vmtv/vmlatino/chunklist_w349784564.m3u8",
+                    "Url":          "https://5eac7b031d945.streamlock.net/WEB/WEB_source/playlist.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://fastly.4sqi.net/img/general/558x200/28539980_1raUHzoeX2jhhajpn0lWQz8Dh59LbRRXnzQQmckj_f4.jpg",
-                    "Categories":   ["General", "San Jose"],
+                    "HDPosterUrl":  "pkg:/images/logo_esperanza.jpeg",
+                    "Categories":   ["Featured", "Religious"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Cristovision",
-                    "channel":      "",
+                    "Title":        "Telefides",
                     "region":       "San Jose",
-                    "Url":    "https://liveingesta118.cdnmedia.tv/cristovisionlive/smil:dvrlive.smil/chunklist_b1500000_DVR.m3u8",
+                    "Url":          "http://190.0.226.17:1935/Telefides/livestream/playlist.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://live-tv-channels.org/pt-data/uploads/logo/co-cristovision-6748.jpg",
-                    "Categories":   ["General", "San Jose"],
+                    "HDPosterUrl":  "pkg:/images/logo_telefides.jpeg",
+                    "Categories":   ["Religious"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Esperanza TV",
-                    "channel":      "",
+                    "Title":        "TV Enlace",
                     "region":       "San Jose",
-                    "Url":    "https://5eac7b031d945.streamlock.net/WEB/WEB_source/playlist.m3u8",
-                    "guideURL":     "",
-                    "HDPosterUrl":      "https://i.pinimg.com/280x280_RS/31/22/2e/31222efd9118d951fcde8dd511e83f7f.jpg",
-                    "Categories":   ["General", "San Jose"],
+                    "Url":          "https://1-349-11554-1.b.cdn13.com/LiveHTTPOrigin/live/playlist.m3u8",
+                    "guideURL":     "https://www.enlace.org/programas/",
+                    "HDPosterUrl":  "pkg:/images/logo_enlace.jpeg",
+                    "Categories":   ["Religious"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
                 {
-                    "Title":         "Telefides",
-                    "channel":      "",
+                    "Title":        "KMK Radio TV",
                     "region":       "San Jose",
-                    "Url":    "http://190.0.226.17:1935/Telefides/livestream/playlist.m3u8",
+                    "Url":          "https://panel.streamingtv-mediacp.online:1936/8294/8294/playlist.m3u8",
                     "guideURL":     "",
-                    "HDPosterUrl":      "https://www.nacion.com/resizer/XJla6D6d49cgJJwV0j8YdImmaTs=/600x400/center/middle/filters:quality(100)/cloudfront-us-east-1.images.arcpublishing.com/gruponacion/HAVJDUUUWNENJKFULYLAYQACYM.jpg",
-                    "Categories":   ["General", "San Jose"],
+                    "HDPosterUrl":  "https://static.wixstatic.com/media/e9b9b7_9d27727bb93a4a1190be5ccbf3a58160~mv2.jpeg/v1/fill/w_768,h_387,al_c/e9b9b7_9d27727bb93a4a1190be5ccbf3a58160~mv2.jpeg",
+                    "Categories":   ["Music"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Canal Positivo",
+                    "region":       "San Jose",
+                    "Url":          "https://srv5.zcast.com.br/nellalexander5463/nellalexander5463/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_positv.jpeg",
+                    "Categories":   ["Religious"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Telered",
+                    "region":       "San Jose",
+                    "Url":          "http://k4.usastreams.com/ARBtv/teleplus/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "http://costaricatelevision.com/sites/default/files/2021-04/_Telered%2520Television.png",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Telesistema",
+                    "region":       "San Jose",
+                    "Url":          "http://k4.usastreams.com/ARBtv/ARBtv/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "http://mastelevisioncr.com/wp-content/uploads/2020/08/WhatsApp-Image-2020-08-02-at-12.42.47-300x300.jpeg",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                
+                {
+                    "Title":        "TVN 14 HD",
+                    "region":       "Alajuela",
+                    "Url":          "https://5fd8fec96951d.streamlock.net:8443/TVN/CH14.stream_720p/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://elnortehoy.files.wordpress.com/2020/07/captura-19.jpg",
+                    "Categories":   ["Entertainment"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                
+                
+                {
+                    "Title":        "Anexion TV",
+                    "region":       "Guanacaste",
+                    "Url":          "https://rtmp.info/anexiontv/envivo/playlist.m3u8",
+                    "guideURL":     "https://anexiontv.com/crbst_3.html",
+                    "HDPosterUrl":  "pkg:/images/logo_anexion.jpeg",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Nicoya TV",
+                    "region":       "Guanacaste",
+                    "Url":          "https://59ef525c24caa.streamlock.net/nicoyatv/nicoyatv/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://www.pngkey.com/png/detail/816-8164472_nicoya-tv.png",
+                    "Categories":   ["Entertainment"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Santa Cruz TV",
+                    "region":       "Guanacaste",
+                    "Url":          "https://rtmp.info/tvsantacruz/envivo/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_santa_cruz_tv.png",
+                    "Categories":   ["Entertainment"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+
+                {
+                    "Title":        "Tv Sur 14",
+                    "region":       "Sur de Costa Rica",
+                    "Url":          "https://5bf8041cb3fed.streamlock.net:443/TVSURCANAL14/TVSURCANAL14/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://directostv.teleame.com/wp-content/uploads/2016/06/TV-Sur-Canal-14-en-vivo-Online.png",
+                    "Categories":   ["Entertainment"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Ciudad Neily Webcam & Radio",
+                    "region":       "Sur de Costa Rica",
+                    "Url":          "https://5d16127744872.streamlock.net/canal3/canal3/playlist.m3u8",
+                    "guideURL":     "https://colosalstereo.com/programacion.php",
+                    "HDPosterUrl":  "https://yt3.ggpht.com/tkrlDYAvs4-XHqcX3cVL1Mqx4Z-UOKyR18TXOjidFggk_v4gdeHL03aTjFqB0DY8b4KjUSOeyw=s900-c-k-c0x00ffffff-no-rj",
+                    "Categories":   ["Music"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Colosal TV HD",
+                    "region":       "Sur de Costa Rica",
+                    "Url":          "http://tv.ticosmedia.com:1935/COLOSAL/COLOSAL/playlist.m3u8",
+                    "guideURL":     "https://colosalstereo.com/programacion.php",
+                    "HDPosterUrl":  "https://lh3.googleusercontent.com/proxy/FAgtZ3v5FinkkD7caOyy2ErcVU4FI12pFU0vM-3AhawTw243DH5XPoFiuxx8mvb1zNfKzx3AC_sm8W_EpXe_Iachk4NVxRtlh4vGgkVPRJMf0ghi4_uJgKGtjSXuF6dJHgcz50qQg-4",
+                    "Categories":   ["Music"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+
+                {
+                    "Title":        "Los Santos TV",
+                    "region":       "Occidente del Valle Central",
+                    "Url":          "http://tiquiciatv.com:1935/lstv/web/playlist.m3u8",
+                    "guideURL":     "https://colosalstereo.com/programacion.php",
+                    "HDPosterUrl":  "pkg:/images/logo_los_santos.jpeg",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Occidente En Línea",
+                    "region":       "Occidente del Valle Central",
+                    "Url":          "https://inliveserver.com:1936/15508/15508/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://costaricatelevision.com/sites/default/files/styles/tv_list/public/2021-05/occidente-en-linea-costa-rica.png",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+
+                {
+                    "Title":        "TV Uno 27",
+                    "region":       "Zona de Occidente",
+                    "Url":          "https://5d16127744872.streamlock.net/TVUNO/TVUNO/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://yt3.ggpht.com/ytc/AKedOLSOLnUKdlVxhGK4OGaqwrYubEnbZi463c2tabdhyQ=s900-c-k-c0x00ffffff-no-rj",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+
+                {
+                    "Title":        "SarapiquiTV",
+                    "region":       "Sarapiqui",
+                    "Url":          "http://209.126.105.158:1935/stv/web/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://play-lh.googleusercontent.com/06blQk_MW8hp4sQEfxlkxrm3Vlnyj0Wg6Diu_CdLui3wW8Pk9SXFaScG-ErDuKzYQes",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+
+                {
+                    "Title":        "TV Digital Chirripo",
+                    "region":       "Perez Zeledon",
+                    "Url":          "http://tv.tiquiciatv.com:1935/tvdc/envivo_720p/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "http://tiquiciatv.com/images/LOGO-WEB-TV-DIGITAL-CHIRRIP--FINAL-SOLO-NOMBRE_5p3oebd0.jpg",
+                    "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "TV Curre Canal 36",
+                    "region":       "Perez Zeledon",
+                    "Url":          "http://k6.usastreams.online/Tvcurre/Tvcurre/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_tv_curre.png",
+                    "Categories":   ["Entertainment"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+
+                {
+                    "Title":        "Oldies Hits TV",
+                    "region":       "Unknown",
+                    "Url":          "https://inliveserver.com:1936/15508/15508/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://www.freeradiotune.com/wp-content/uploads/2015/12/Oldies-Hits.png",
+                    "Categories":   ["Music"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Radio Best Music TV",
+                    "region":       "Unknown",
+                    "Url":          "https://cp.sradiotv.com:1936/8016/8016/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://editor.zenomedia.com/resources/zs_station/529532/CardWebsite/image.jpg",
+                    "Categories":   ["Music"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Tvretro Palmares",
+                    "region":       "Unknown",
+                    "Url":          "http://tvretropalmares.com:8090/hls/envivo.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://cigars.roku.com/v1/contain/800x454/https%3A%2F%2Fimage.roku.com%2Fdeveloper_channels%2Fprod%2Ff93bcbbf392910af21e079475aaf38a8c59fbb49fbf9f8fcbea8b8300948b7ba.jpg",
+                    "Categories":   ["Family"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "VoiceOver RadioTV",
+                    "region":       "Unknown",
+                    "Url":          "https://panel.streamingtv-mediacp.online:1936/8160/8160/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_voice_over.png",
+                    "Categories":   ["Retro", "Family"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "Mega Fuzion Radio y TV",
+                    "region":       "Unknown",
+                    "Url":          "https://59ef525c24caa.streamlock.net/megafusion/megafusion/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_mega_fuzion_radio_y_tv.png",
+                    "Categories":   ["Retro", "Family"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 }

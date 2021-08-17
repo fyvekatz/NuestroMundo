@@ -3,7 +3,7 @@
 
 sub init()
 
-    ? "==Entering HomeScenes:init=="
+    ? "==Entering HomeScene:init=="
 
     m.channelInfoPosterCompact      = m.top.findNode("channelInfoPosterCompact")
 
@@ -22,8 +22,6 @@ sub init()
     m.videoPlayingShowWidgetsAnimation = m.top.findNode("videoPlayingShowWidgets")
     m.videoPlayingHideWidgetsTimer = m.top.findNode("videoPlayingHideWidgets")
 
-    ? m.videoPlayingShowWidgetsAnimation
-
     'Country list loaded in subroutine
     loadCountriesContent(m.global)
     
@@ -40,10 +38,10 @@ sub init()
     m.mainPosterTimer.ObserveField("fire", "doNormalScroll")
     m.channelsGrid.ObserveField("rowItemSelected", "ChannelChange")
     m.channelVideo.ObserveField("state", "VideoStateChanged")
-    m.videoPlayingHideWidgetsTimer.ObserveField("fire", "videoPlayingHideWidgets")
+    'm.videoPlayingHideWidgetsTimer.ObserveField("fire", "videoPlayingHideWidgets")
     m.top.setFocus(true)
 
-    ? "==Exitting HomeScenes:init=="
+    ? "==Exitting HomeScene:init=="
 end sub
 
 sub doNormalScroll()
@@ -69,7 +67,7 @@ sub doNormalScroll()
 end sub
 
 sub progressMainPoster(index as Integer)
-    ? "==Entering HomeScenes:progressMainPoster=="
+    ? "==Entering HomeScene:progressMainPoster=="
 
     currentCountry = m.global.countriesContent.countries.keys()[index]
     m.mainPoster.uri = "pkg:/images/poster_" + m.global.countriesContent.countries[m.global.countriesContent.countries.keys()[index]].shortCode  + ".jpeg"
@@ -79,11 +77,11 @@ sub progressMainPoster(index as Integer)
     ? "Changing to " + currentCountry + "(index: " + index.ToStr() + ")"
     m.top.findNode("channelInfoPosterCompact").country = currentCountry
 
-    ? "==Exitting HomeScenes:progressMainPoster=="
+    ? "==Exitting HomeScene:progressMainPoster=="
 end sub
 
 function onKeyEvent(key as String, press as Boolean) as Boolean
-    ? "==Entering HomeScenes:onKeyEvent (key: " + key + ")=="
+    ? "==Entering HomeScene:onKeyEvent (key: " + key + ")=="
     
     handled = false
 
@@ -91,7 +89,9 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
 
         ' If player main seen is showing
         if m.channelVideo.visible = false
-        
+            
+            ? "Video player is not visible"
+
             if key = "left" OR key = "right"
 
                 ? "Manually scroll through countries"
@@ -137,13 +137,16 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
 
         ' If player is visible
         else
+            ? "Video player is visible"
 
             ' If chanelsGrid is visible, we want to return to the video.
             if channelsGridVisible()
+
+                ? "Channels grid is visible"
                 if key = "back" or (key = "up" and m.channelsGrid.rowItemSelected[0] = 1)
                    
                     'hide the onscreen widgets
-                    m.videoPlayingHideWidgetsAnimation.control = "start"
+                    m.videoPlayingHideWidgetstimer.control = "start"
                     m.channelsGrid.setFocus(false)
                     m.top.setFocus(true)
                     handled = true
@@ -151,13 +154,13 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
            
             ' If chanelsGrid is not visible, we want to stop the video and return the main screen.
             else
+                ? "Channels grid is not visible."
 
                 ' Show onscreen widgets
                 if key = "down" or key = "up"
-                    ? m.videoPlayingShowWidgetsAnimation
-    
                     m.videoPlayingShowWidgetsAnimation.control = "start"
                     m.channelsGrid.setFocus(true)
+                    handled = true
 
                 ' Go back to the main screen
                 else if key = "back" 
@@ -165,17 +168,18 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
                     m.mainPoster.visible = "true"
                     m.videoPlayingShowWidgetsAnimation.control = "start"
                     m.mainPosterTimer.control = "start"
+                    handled = true
                 end if
             end if
         end if    
     end if
 
-    ? "==Exitting HomeScenes:onKeyEvent=="
+    ? "==Exitting HomeScene:onKeyEvent=="
     return handled
 end function
 
 sub ChannelChange()
-    ? "==Entering HomeScenes:ChannelChange=="
+    ? "==Entering HomeScene:ChannelChange=="
 
     ? m.channelsGrid.content.getChild(m.channelsGrid .rowItemFocused[0]).getChild(m.channelsGrid .rowItemFocused[1])
 
@@ -187,19 +191,25 @@ sub ChannelChange()
     m.mainPosterTimer.control = "stop"
 
     'Return focus to the main scene. If the grid maintains control, won't be able to control.
-    m.channelsGrid.setFocus(false)
-    m.top.setFocus(true)
+    'Wait to do this after the video is playing. See VideoStateChanged()
 
-    ? "==Exitting HomeScenes:ChannelChange=="
+    'm.channelsGrid.setFocus(false)
+    'm.top.setFocus(true)
+
+    ? "==Exitting HomeScene:ChannelChange=="
 end sub
 
 sub VideoStateChanged()
-    ? "==Entering HomeScenes:VideoStateChanged=="
+    ? "==Entering HomeScene:VideoStateChanged=="
 
+    ? "Video state: " + m.channelVideo.state
     ' Hide the ChannelNameFlagAndScroll widget
     if m.channelVideo.state = "playing"
 
         m.videoPlayingHideWidgetsTimer.control = "start"
+        m.channelsGrid.setFocus(false)
+        m.top.setFocus(true)
+        
 
     else if m.channelVideo.state = "stopped"
         m.channelVideo.visible = "false"
@@ -208,12 +218,16 @@ sub VideoStateChanged()
         m.channelInfoPosterCompactAppearAnimation.control = "start"
     end if
 
-    ? "==Exiting HomeScenes:VideoStateChanged=="
+    ? "==Exiting HomeScene:VideoStateChanged=="
 end sub
 
-sub videoPlayingHideWidgets()
-    m.videoPlayingHideWidgetsAnimation.control = "start"
-end sub
+'sub videoPlayingHideWidgets()
+'    ? "==Entering HomeScene:videoPlayingHideWidgets"
+
+'    m.videoPlayingHideWidgetsAnimation.control = "start"
+
+'    ? "==Exitting HomeScene:videoPlayingHideWidgets"
+'end sub
 
 function channelsGridVisible() as boolean
     if m.bottomBar.translation[1] >= 1080
