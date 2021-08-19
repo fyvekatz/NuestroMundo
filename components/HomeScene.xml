@@ -48,7 +48,7 @@
 
 		<ChannelNameFlagAndScroll 
 			id = "channelInfoPosterCompact"
-			translation = "[25, 300]"
+			translation = "[25, 100]"
 			width = "500"
 			height = "350"
 			clippingRect = "[0.0, 0.0, 500, 350]"
@@ -59,7 +59,7 @@
 
 		<Rectangle
 			id = "bottomBar"
-			translation = "[0,810]"
+			translation = "[0,610]"
 			width = "1920"
 			height = "1080"
 			color = "0x000000FF"
@@ -68,14 +68,15 @@
 			<ChannelsGrid
 				id  = "channelsGrid"
 				itemComponentName = "RowListItems"
-				translation = "[0, 0]"
+				translation = "[0, 50]"
 				numRows = "3"
 				rowItemSize = "[[356,200]]"
 				rowItemSpacing = "[[30,0]]"
 				itemSize = "[1920,300]"
 				rowFocusAnimationStyle = "floatingFocus"
-				rowLabelOffset = "[[10,10]]"
+				rowLabelOffset = "[[0,30]]"
 				showRowLabel = "[true]"
+				inheritParentOpacity = "false"
 				country = "" />
 		</Rectangle>
 
@@ -86,7 +87,6 @@
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
 					key="[0.0, 1.0]"
-					keyValue="[ [25, 300], [-525, 300] ]"
 					fieldToInterp="channelInfoPosterCompact.translation"   />
 			</Animation>
 			<Animation id="bottomBarDisappear"
@@ -113,7 +113,6 @@
 				easeFunction="linear">
 				<Vector2DFieldInterpolator
 					key="[0.0, 1.0]"
-					keyValue="[ [-525, 300], [25, 300] ]"
 					fieldToInterp="channelInfoPosterCompact.translation"   />
 			</Animation>
 			<Animation id="bottomBarAppear"

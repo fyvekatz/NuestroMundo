@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
+
+<component name="ScrollPositionIndicator" extends="Rectangle" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type = "text/brightscript" uri = "pkg:/components/ScrollPositionIndicator.brs" />
+	
+	<interface>
+		<field id = "numberOfPositions" 	type = "integer" 		onChange = "updateLayout" />
+        <field id = "currentPositions" 		type = "integer" 		onChange = "updateLayout" />
+	</interface>
+</component>

@@ -88,18 +88,18 @@ Sub loadContent()
             countryContentItem.appendChild(categoryContentItem)
         end for
 
-        ? "Content node for " + country
-        ? countryContentItem
+        '? "Content node for " + country
+        '? countryContentItem
 
         for each categoryContentItem in countryContentItem.getChildren(-1, 0)
 
-            ? "Content node for " + categoryContentItem.TITLE
-            ? categoryContentItem
+            '? "Content node for " + categoryContentItem.TITLE
+            '? categoryContentItem
 
             for each channelContentItem in categoryContentItem.getChildren(-1, 0)
 
-                ? "Content node for " + channelContentItem.TITLE
-                ? channelContentItem
+                '? "Content node for " + channelContentItem.TITLE
+                '? channelContentItem
             end for
         end for
 

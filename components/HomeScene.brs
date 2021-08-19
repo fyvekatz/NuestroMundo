@@ -18,10 +18,20 @@ sub init()
 
     m.channelInfoPosterCompactDisappearAnimation = m.top.findNode("channelNameFlagAndScrollDisappear")
     m.channelInfoPosterCompactAppearAnimation = m.top.findNode("channelNameFlagAndScrollAppear")
+
+
     m.videoPlayingHideWidgetsAnimation = m.top.findNode("videoPlayingHideWidgets")
     m.videoPlayingShowWidgetsAnimation = m.top.findNode("videoPlayingShowWidgets")
     m.videoPlayingHideWidgetsTimer = m.top.findNode("videoPlayingHideWidgets")
 
+    'Moving definition of keyValue from brs to here so that the y value can
+    'by dynamically inherited
+    m.videoPlayingHideWidgetsAnimation.getChild(0).keyValue=[ [25, m.channelInfoPosterCompact.translation[1]], [-525, m.channelInfoPosterCompact.translation[1]] ]
+    m.videoPlayingShowWidgetsAnimation.getChild(0).keyValue=[ [-525, m.channelInfoPosterCompact.translation[1]], [25, m.channelInfoPosterCompact.translation[1]] ]
+    
+    ?m.videoPlayingHideWidgetsAnimation.getChild(0)
+    ?m.videoPlayingShowWidgetsAnimation.getChild(0)
+    
     'Country list loaded in subroutine
     loadCountriesContent(m.global)
     

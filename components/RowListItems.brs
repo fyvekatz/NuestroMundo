@@ -2,6 +2,7 @@ Sub init()
 	? "==Entering RowListItems:init=="
 	m.Poster 			= m.top.findNode("poster")
 	m.Label 			= m.top.findNode("label")
+	m.Label.visible = false
 	? "==Exiting RowListItems:init=="
 End Sub
 

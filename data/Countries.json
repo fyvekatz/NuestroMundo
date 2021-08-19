@@ -145,6 +145,16 @@
                     "Live":         "true"
                 },
                 {
+                    "Title":        "Extrema TV",
+                    "region":       "San Jose",
+                    "Url":          "https://unored.tv/wp-content/uploads/2018/03/Extrema-TV-portal-Unored.png",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_positv.jpeg",
+                    "Categories":   ["Religious"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
                     "Title":        "Telered",
                     "region":       "San Jose",
                     "Url":          "http://k4.usastreams.com/ARBtv/teleplus/playlist.m3u8",
@@ -161,6 +171,16 @@
                     "guideURL":     "",
                     "HDPosterUrl":  "http://mastelevisioncr.com/wp-content/uploads/2020/08/WhatsApp-Image-2020-08-02-at-12.42.47-300x300.jpeg",
                     "Categories":   ["General"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "San Jose TV",
+                    "region":       "San Jose",
+                    "Url":          "https://rtmp.info/sanjosetv/envivo/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "https://4.bp.blogspot.com/-PsVXXPIImPI/XCkg2_9To1I/AAAAAAAAHSE/mFHhHlj4ErQ4oG8d54WjkHrarhXc7AjRgCEwYBhgL/s210/blanco-crop.png",
+                    "Categories":   ["Religious"],
                     "StreamFormat": "hls",
                     "Live":         "true"
                 },
@@ -214,6 +234,16 @@
                     "Url":          "https://5bf8041cb3fed.streamlock.net:443/TVSURCANAL14/TVSURCANAL14/playlist.m3u8",
                     "guideURL":     "",
                     "HDPosterUrl":  "pkg:/images/logo_tv_sur.jpeg",
+                    "Categories":   ["Entertainment"],
+                    "StreamFormat": "hls",
+                    "Live":         "true"
+                },
+                {
+                    "Title":        "TeleSur",
+                    "region":       "Sur de Costa Rica",
+                    "Url":          "https://59ef525c24caa.streamlock.net/telesur/telesur/playlist.m3u8",
+                    "guideURL":     "",
+                    "HDPosterUrl":  "pkg:/images/logo_telesur.jpeg",
                     "Categories":   ["Entertainment"],
                     "StreamFormat": "hls",
                     "Live":         "true"
@@ -365,10 +395,6 @@
             },
             "Honduras": {
                 "shortCode":    "HN",
-                "channels": []
-            },
-            "Mexico": {
-                "shortCode":    "MX",
                 "channels": []
             },
             "Nicaragua": {
