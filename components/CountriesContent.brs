@@ -1,57 +1,57 @@
-sub loadCountriesContent(global as Object)
-    ? "==Entering CountriesContent:loadCountriesContent=="
+sub loadCountriesData(global as Object)
+    ? "==Entering CountriesData:loadCountriesData=="
 
-    global.addField("countriesContent", "roassociativearray", false)
-    global.countriesContent = parsejson(readAsciiFile("pkg:/data/Countries.json"))
-
-    ? "==Exitting CountriesContent:loadCountriesContent=="
+    global.addField("countriesData", "roassociativearray", false)
+    global.countriesData = parsejson(readAsciiFile("pkg:/data/Countries.json"))
+    
+    ? "==Exitting CountriesData:loadCountriesData=="
 end sub
 
 function getCountryIndex(country as String) as Integer
-    ? "==Entering CountriesContent:getCountryIndex=="
+    ? "==Entering CountriesData:getCountryIndex=="
 
     retVal = invalid
 
     if country = invalid or country = "" then return invalid
 
-    for index = 0 to m.global.countriesContent.countries.keys().count() step 1
-        if country = m.global.countriesContent.countries.keys()[index] then retVal = index
+    for index = 0 to m.global.countriesData.countries.keys().count() step 1
+        if country = m.global.countriesData.countries.keys()[index] then retVal = index
     end for
 
-    ? "==Exitting CountriesContent:getCountryIndex=="
+    ? "==Exitting CountriesData:getCountryIndex=="
     return retVal
 end function
 
 function incrementCountryIndex(index as Integer) as Integer
-    ? "==Entering CountriesContent:incrementCountryIndex=="
+    ? "==Entering CountriesData:incrementCountryIndex=="
 
     returnVal = invalid
 
-    if index < 0 or index >= m.global.countriesContent.countries.count() then returnVal = invalid
+    if index < 0 or index >= m.global.countriesData.countries.count() then returnVal = invalid
 
-    if index = m.global.countriesContent.countries.count() - 1
+    if index = m.global.countriesData.countries.count() - 1
         returnVal = 0
     else
         returnVal = index + 1
     end if    
 
-    ? "==Exitting CountriesContent:incrementCountryIndex=="
+    ? "==Exitting CountriesData:incrementCountryIndex=="
     return returnVal
 end function
 
 function decrementCountryIndex(index as Integer) as Integer
-    ? "==Entering CountriesContent:decrementCountryIndex=="
+    ? "==Entering CountriesData:decrementCountryIndex=="
 
     returnVal = invalid
 
-    if index < 0 or index >= m.global.countriesContent.countries.count() then returnVal = invalid
+    if index < 0 or index >= m.global.countriesData.countries.count() then returnVal = invalid
 
     if index = 0
-        returnVal = m.global.countriesContent.countries.count() - 1
+        returnVal = m.global.countriesData.countries.count() - 1
     else
         returnVal = index - 1
     end if    
 
-    ? "==Exitting CountriesContent:decrementCountryIndex=="
+    ? "==Exitting CountriesData:decrementCountryIndex=="
     return returnVal
 end function

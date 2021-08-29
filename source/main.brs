@@ -5,7 +5,7 @@ sub Main()
 
     ' Globals
     m.global = screen.getGlobalNode()
-
+    
     scene = screen.CreateScene("HomeScene")
 
     screen.show()

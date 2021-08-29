@@ -46,7 +46,7 @@
 			duration="10"
 		/>
 
-		<ChannelNameFlagAndScroll 
+		<!--<ChannelNameFlagAndScroll 
 			id = "channelInfoPosterCompact"
 			translation = "[25, 300]"
 			width = "500"
@@ -55,76 +55,96 @@
 			color = "0x000000"
 			inheritParentOpacity = "false"
 			opacity = "0.85"
-		/>
+			visible="false"
+		/>-->
 
 		<Rectangle
-			id = "bottomBar"
+			id = "featuredChannelsBottomBar"
 			translation = "[0,810]"
 			width = "1920"
-			height = "1080"
+			height = "270"
 			color = "0x000000FF"
-			opacity = "0.7"
-			visible = "true">
-			<ChannelsGrid
-				id  = "channelsGrid"
+			opacity = "0.7">
+			<FeaturedChannelsGrid
+				id  = "featuredChannelsGrid"
 				itemComponentName = "RowListItems"
 				translation = "[0, 0]"
-				numRows = "3"
+				numRows = "1"
 				rowItemSize = "[[356,200]]"
-				rowItemSpacing = "[[30,0]]"
+				rowItemSpacing = "[[15,0]]"
 				itemSize = "[1920,300]"
 				rowFocusAnimationStyle = "floatingFocus"
 				rowLabelOffset = "[[10,10]]"
+				rowCounterRightOffset = "10"
+				rowLabelFont = "font:LargeBoldSystemFont"
 				showRowLabel = "[true]"
-				country = "" />
+				showRowCounter = "[true]"
+				country = "Costa Rica" />
 		</Rectangle>
 
-		<ParallelAnimation id="videoPlayingHideWidgets">
-			<Animation id="channelNameFlagAndScrollDisappear"
-				duration="0.75"
-				repeat="false"
-				easeFunction="linear">
-				<Vector2DFieldInterpolator
-					key="[0.0, 1.0]"
-					keyValue="[ [25, 300], [-525, 300] ]"
-					fieldToInterp="channelInfoPosterCompact.translation"   />
+		<Rectangle
+			id = "tvGuideBar"
+			translation = "[0,1080]"
+			width = "1920"
+			height = "1080"
+			color = "0x000000FF"
+			opacity = "0.7">
+			<TvGuideGrid
+				id  = "tvGuideGrid"
+				itemComponentName = "RowListItems"
+				translation = "[0, 0]"
+				rowItemSize = "[[384,216]]"
+				itemSize = "[1920,216]"
+				rowFocusAnimationStyle = "floatingFocus"
+				country = "Costa Rica" />
+		</Rectangle>
+
+		<SequentialAnimation id="featuredChannelsToTvGuideAnimation">
+			<Animation id="hideFeaturedChannelsAnimation"
+					duration="0.375"
+					repeat="false"
+					easeFunction="linear">
+					<Vector2DFieldInterpolator
+						key="[0.0, 1.0]"
+						keyValue="[ [0,810], [0, 1080] ]"
+						fieldToInterp="featuredChannelsBottomBar.translation"   />
 			</Animation>
-			<Animation id="bottomBarDisappear"
-				duration="0.75"
-				repeat="false"
-				easeFunction="linear">
-				<Vector2DFieldInterpolator
-					key="[0.0, 1.0]"
-					keyValue="[ [0,810], [0, 1080] ]"
-					fieldToInterp="bottomBar.translation"   />
+			<Animation
+					duration="1.125"
+					repeat="false"
+					easeFunction="linear">
+					<Vector2DFieldInterpolator
+						key="[0.0, 1.0]"
+						keyValue="[ [0,1080], [0, 270] ]"
+						fieldToInterp="tvGuideBar.translation"   />
 			</Animation>
-		</ParallelAnimation>
+		</SequentialAnimation>
+
+		<SequentialAnimation id="tvGuideToFeaturedChannelsAnimation">
+			<Animation id="minimizeTvGuideAnimation"
+					duration="1.125"
+					repeat="false"
+					easeFunction="linear">
+					<Vector2DFieldInterpolator
+						key="[0.0, 1.0]"
+						keyValue="[ [0, 270], [0,1080] ]"
+						fieldToInterp="tvGuideBar.translation"   />
+			</Animation>
+			<Animation id = "showFeaturedChannelsAnimation"
+					duration="0.375"
+					repeat="false"
+					easeFunction="linear">
+					<Vector2DFieldInterpolator
+						key="[0.0, 1.0]"
+						keyValue="[ [0, 1080], [0,810] ]"
+						fieldToInterp="featuredChannelsBottomBar.translation"   />
+			</Animation>
+		</SequentialAnimation>
 
 		<Timer
-			id="videoPlayingHideWidgetsTimer"
+			id="bottomBarTimeoutTimer"
 			repeat="false"
 			duration="7"
 		/>
-
-		<ParallelAnimation id="videoPlayingShowWidgets">
-			<Animation id="channelNameFlagAndScrollAppear"
-				duration="0.75"
-				repeat="false"
-				easeFunction="linear">
-				<Vector2DFieldInterpolator
-					key="[0.0, 1.0]"
-					keyValue="[ [-525, 300], [25, 300] ]"
-					fieldToInterp="channelInfoPosterCompact.translation"   />
-			</Animation>
-			<Animation id="bottomBarAppear"
-				duration="0.75"
-				repeat="false"
-				easeFunction="linear">
-				<Vector2DFieldInterpolator
-					key="[0.0, 1.0]"
-					keyValue="[ [0, 1080], [0,810] ]"
-					fieldToInterp="bottomBar.translation"   />
-			</Animation>
-		</ParallelAnimation>
 	</children>
 </component>

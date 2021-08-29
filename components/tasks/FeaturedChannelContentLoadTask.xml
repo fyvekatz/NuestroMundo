@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="FeaturedChannelContentLoadTask" extends="Task">
+    <script type= "text/brightscript" uri = "pkg:/components/tasks/FeaturedChannelContentLoadTask.brs"/>
+    <interface>
+        <field id="content" type="assocarray" />
+    </interface>
+</component>

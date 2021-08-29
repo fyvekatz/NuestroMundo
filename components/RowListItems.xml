@@ -8,7 +8,7 @@
 	<interface>
 		<field id = "height" 		type = "float" 		onChange = "updateLayout" />
 		<field id = "width" 		type = "float" 		onChange = "updateLayout" />
-		<field id = "itemContent" 	type ="node" 		onChange ="itemContentChanged"/> 
+		<field id = "itemContent" 	type = "node" 		onChange = "itemContentChanged"/> 
 	</interface>
 
 	<children>
@@ -18,14 +18,14 @@
 			height = "150"
 			width = "267"
 			loadDisplayMode = "scaleToFill">
-			<Label
+			<!--<Label
 				id = "label"
 				height = "30"
 				width = "267"
 				horizAlign = "center"
 				color = "0xFFFFFFFF"
 				font = "font:SmallBoldSystemFont"
-			/>
+			/>-->
 		</Poster>
 	</children>
 </component>
