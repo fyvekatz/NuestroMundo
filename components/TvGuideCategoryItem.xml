@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="TvGuideCategoryItem" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type = "text/brightscript" uri = "pkg:/components/TvGuideCategoryItem.brs" />
+	
+	<interface>
+		<field id = "height" 		type = "float" 		onChange = "updateLayout" />
+		<field id = "width" 		type = "float" 		onChange = "updateLayout" />
+		<field id = "itemContent" 	type = "node" 		onChange = "itemContentChanged"/> 
+	</interface>
+
+	<children>
+		<Poster id = "nodeIcon" 
+			translation = "[0, 0]"
+			height = "50"
+			width = "50" />
+		<Label id = "nodeLabel"
+			translation = "[100, 0]"
+			font = "font:MediumSystemFont"
+			horizAlign = "left"
+			vertAlign = "center" />	
+	</children>
+</component>

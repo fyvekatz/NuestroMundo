@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="TvGuideContentGrid" extends="MarkupGrid" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type = "text/brightscript" uri = "pkg:/components/TvGuideContentGrid.brs" />
+	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />
+
+	<interface>
+		<field id = "country" 	type = "string"/>
+		<field id = "category" 	type = "string"/>
+	</interface>
+</component>

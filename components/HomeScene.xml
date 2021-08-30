@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
-
 <component name="HomeScene" extends="Scene" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
 	<script type = "text/brightscript" uri = "pkg:/components/HomeScene.brs" />
 	<script type = "text/brightscript" uri = "pkg:/components/CountriesContent.brs" />
@@ -46,18 +44,6 @@
 			duration="10"
 		/>
 
-		<!--<ChannelNameFlagAndScroll 
-			id = "channelInfoPosterCompact"
-			translation = "[25, 300]"
-			width = "500"
-			height = "350"
-			clippingRect = "[0.0, 0.0, 500, 350]"
-			color = "0x000000"
-			inheritParentOpacity = "false"
-			opacity = "0.85"
-			visible="false"
-		/>-->
-
 		<Rectangle
 			id = "featuredChannelsBottomBar"
 			translation = "[0,810]"
@@ -88,15 +74,26 @@
 			width = "1920"
 			height = "1080"
 			color = "0x000000FF"
-			opacity = "0.7">
-			<TvGuideGrid
-				id  = "tvGuideGrid"
+			opacity = "0.85">
+			<TvGuideCategoriesGrid
+				id  = "tvGuideCategoriesGrid"
+				numColumns = "2"
+
+				itemComponentName = "TvGuideCategoryGrid"
+				translation = "[0, 0]"
+				itemSize = "[1920,216]"
+				rowFocusAnimationStyle = "floatingFocus"
+				country = "Costa Rica" >
+
+				<TvGuideContentGrid
+				id  = "tvGuideContentGrid"
 				itemComponentName = "RowListItems"
 				translation = "[0, 0]"
 				rowItemSize = "[[384,216]]"
 				itemSize = "[1920,216]"
 				rowFocusAnimationStyle = "floatingFocus"
 				country = "Costa Rica" />
+			</TvGuideGrid>
 		</Rectangle>
 
 		<SequentialAnimation id="featuredChannelsToTvGuideAnimation">

@@ -1,5 +1,5 @@
 sub init()
-    ? "==Entering FeaturedChannelsGrid:init=="
+    ? "==Entering TvGuideCategoryGrid:init=="
 
     'Load channel configuration content from DISK
     if m.global.countriesData = invalid
@@ -14,17 +14,17 @@ sub init()
     m.loadChannelContentTask.ObserveField("content", "updateChannelContent")
     m.top.ObserveField("country", "countryChanged")
 
-    ? "==Exiting FeaturedChannelsGrid:init=="
+    ? "==Exiting TvGuideCategoryGrid:init=="
 end sub
 
 sub countryChanged()
-    ? "==Entering FeaturedChannelsGrid:countryChanged=="
+    ? "==Entering TvGuideCategoryGrid:countryChanged=="
     updateChannelContent()
-    ? "==Exitting FeaturedChannelsGrid:countryChanged=="
+    ? "==Exitting TvGuideCategoryGrid:countryChanged=="
 end sub
 
 sub updateChannelContent()
-	? "==Entering FeaturedChannelsGrid:updateChannelContent=="
+	? "==Entering TvGuideCategoryGrid:updateChannelContent=="
     
     if m.loadChannelContentTask.content <> invalid
 
@@ -44,21 +44,21 @@ sub updateChannelContent()
         end for
     end if 
 
-	? "==Exitting FeaturedChannelsGrid:updateChannelContent=="
+	? "==Exitting TvGuideCategoryGrid:updateChannelContent=="
 end sub
 
 sub FocusChange()
-    ? "==Entering FeaturedChannelsGrid:FocusChange=="
+    ? "==Entering TvGuideCategoryGrid:FocusChange=="
 
     '? m.top.rowItemFocused
     '? m.top.content.getChild(m.top.rowItemFocused[0])
     '? m.top.content.getChild(m.top.rowItemFocused[0]).getChild(m.top.rowItemFocused[1])
 
-    ? "==Exiting FeaturedChannelsGrid:FocusChange=="
+    ? "==Exiting TvGuideCategoryGrid:FocusChange=="
 end sub
 
 sub ItemSelected()
-    ? "==Entering FeaturedChannelsGrid:ItemSelected=="
+    ? "==Entering TvGuideCategoryGrid:ItemSelected=="
 
     ' Necessary line. Noticed that the first time this function is called, there's no row item selected
     if m.top.rowItemSelected <> invalid and m.top.rowItemSelected.count() <> 0
@@ -68,5 +68,5 @@ sub ItemSelected()
         '? m.top.content.getChild(m.top.rowItemSelected[0]).getChild(m.top.rowItemSelected[1])
     end if
 
-    ? "==Exitting FeaturedChannelsGrid:ItemSelected=="
+    ? "==Exitting TvGuideCategoryGrid:ItemSelected=="
 end sub

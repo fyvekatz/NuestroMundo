@@ -2,8 +2,8 @@
 
 <!-- Copyright 2016 Roku Corp.  All Rights Reserved. -->
 
-<component name="RowListItems" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
-	<script type = "text/brightscript" uri = "pkg:/components/RowListItems.brs" />
+<component name="TvGuideChannelItem" extends="Group" xsi:noNamespaceSchemaLocation="https://devtools.web.roku.com/schema/RokuSceneGraph.xsd">
+	<script type = "text/brightscript" uri = "pkg:/components/TvGuideChannelItem.brs" />
 	
 	<interface>
 		<field id = "height" 		type = "float" 		onChange = "updateLayout" />
