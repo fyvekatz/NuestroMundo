@@ -5,13 +5,27 @@ sub init()
     if m.global.countriesData = invalid
     	loadCountriesData(m.global)
 	endif
-    
-    'Load / prep any multimedia 
-    m.loadChannelContentTask            = createObject("RoSGNode", "FeaturedChannelContentLoadTask")
-    m.loadChannelContentTask.control    = "RUN"
 
-    'Call-back functions for when channel content should be changed
-    m.loadChannelContentTask.ObserveField("content", "updateChannelContent")
+    contentRoot = CreateObject("rosgnode", "ContentNode")
+
+    contentItem = CreateObject("rosgnode", "ContentNode")
+    contentItem.TITLE = "Featured"
+    contentItem.HDGRIDPOSTERURL = "pkg:/images/icon_" + contentItem.TITLE + ".png"
+    contentRoot.appendChild(contentItem)
+
+    contentItem = CreateObject("rosgnode", "ContentNode")
+    contentItem.TITLE = "Music"
+    contentItem.HDGRIDPOSTERURL = "pkg:/images/icon_" + contentItem.TITLE + ".png"
+    contentRoot.appendChild(contentItem)
+
+    contentItem = CreateObject("rosgnode", "ContentNode")
+    contentItem.TITLE = "Religious"
+    contentItem.HDGRIDPOSTERURL = "pkg:/images/icon_" + contentItem.TITLE + ".png"
+    contentRoot.appendChild(contentItem)
+
+
+    m.top.content = contentRoot
+    
     m.top.ObserveField("country", "countryChanged")
 
     ? "==Exiting TvGuideCategoryGrid:init=="
@@ -19,14 +33,16 @@ end sub
 
 sub countryChanged()
     ? "==Entering TvGuideCategoryGrid:countryChanged=="
+
     updateChannelContent()
+
     ? "==Exitting TvGuideCategoryGrid:countryChanged=="
 end sub
 
 sub updateChannelContent()
 	? "==Entering TvGuideCategoryGrid:updateChannelContent=="
     
-    if m.loadChannelContentTask.content <> invalid
+    if m.loadChannelContentTask.content <> invalid and m.top.country <> invalid
 
         ? "Setting content for: " + m.top.country
         m.top.content = m.loadChannelContentTask.content[m.top.country]

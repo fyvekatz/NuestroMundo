@@ -11,11 +11,12 @@ Sub loadContent()
 
     'Final associative array. Will be used for lookup of channel lists (category-delimited) by country
     m.contentTemp = {}
-    categoryLabel = "Canales Destacados"
-
+    
     for each country in m.global.countriesData.countries.keys()
         
         '? "For " + country + "..."
+
+        categoryLabel = "Canales Destacados de " + country
 
         'First, make an associative array of channel categories to channels (content nodes) and populate it
         channelsByCategory = {}

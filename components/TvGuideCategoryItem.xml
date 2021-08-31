@@ -11,11 +11,11 @@
 
 	<children>
 		<Poster id = "nodeIcon" 
-			translation = "[0, 0]"
+			translation = "[0, 12]"
 			height = "50"
 			width = "50" />
 		<Label id = "nodeLabel"
-			translation = "[100, 0]"
+			translation = "[65, 22]"
 			font = "font:MediumSystemFont"
 			horizAlign = "left"
 			vertAlign = "center" />	

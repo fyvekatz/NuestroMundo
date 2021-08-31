@@ -75,27 +75,26 @@
 			height = "1080"
 			color = "0x000000FF"
 			opacity = "0.85">
-			<TvGuideCategoriesGrid
+			<TvGuideCategoryGrid
 				id  = "tvGuideCategoriesGrid"
-				numColumns = "2"
-
-				itemComponentName = "TvGuideCategoryGrid"
-				translation = "[0, 0]"
-				itemSize = "[1920,216]"
-				rowFocusAnimationStyle = "floatingFocus"
+				numColumns = "1"
+				itemComponentName = "TvGuideCategoryItem"
+				translation = "[0, 400]"
+				itemSize = "[400,75]"
 				country = "Costa Rica" >
-
+<!--
 				<TvGuideContentGrid
 				id  = "tvGuideContentGrid"
 				itemComponentName = "RowListItems"
 				translation = "[0, 0]"
 				rowItemSize = "[[384,216]]"
 				itemSize = "[1920,216]"
-				rowFocusAnimationStyle = "floatingFocus"
 				country = "Costa Rica" />
-			</TvGuideGrid>
+-->
+			</TvGuideCategoryGrid>
 		</Rectangle>
 
+<!--
 		<SequentialAnimation id="featuredChannelsToTvGuideAnimation">
 			<Animation id="hideFeaturedChannelsAnimation"
 					duration="0.375"
@@ -137,6 +136,7 @@
 						fieldToInterp="featuredChannelsBottomBar.translation"   />
 			</Animation>
 		</SequentialAnimation>
+-->
 
 		<Timer
 			id="bottomBarTimeoutTimer"
