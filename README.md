@@ -7,4 +7,4 @@ Built from a standard template, the [Brightscript](https://developer.roku.com/do
 ![Image 2](README.data/2.jpg)
 ![Image 3](README.data/3.jpg)
 ![Image 4](README.data/4.jpg)
-[Beta Demonstration](README.data/demonstration.mp4)
+[Beta Demonstration](https://youtu.be/fLH5CX2oT94)
